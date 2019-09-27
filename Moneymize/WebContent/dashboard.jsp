@@ -1,0 +1,272 @@
+<!doctype html>
+<%@page import="com.Moneymize.info.groupevent"%>
+<%@page import="com.Moneymize.info.pendingpersonalrequests"%>
+<%@page import="com.Moneymize.info.personalevent"%>
+<%@page import="java.util.ArrayList"%>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Dashboard</title>
+
+ 
+    <!-- Bootstrap core CSS -->
+<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" >
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;  
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .list-group{
+        border-style: solid ;
+        padding-top:5px;
+        padding-bottom:5px;
+        padding-left:5px;
+        padding-right:5px;
+        border-color: #b8bab9;
+        border-radius: 5px;
+    max-height: 200px;
+    min-height: 200px;
+    margin-bottom: 10px;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="${pageContext.request.contextPath}/assets/css/dashboard.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">MoneyMize</a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" href="dashboard.jsp">
+              <span data-feather="home"></span>
+              Dashboard <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="wallet.jsp">
+              <span data-feather="file"></span>
+              Wallet Balance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="daily.jsp">
+              <span data-feather="shopping-cart"></span>
+              Daily expense
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="group.jsp">
+              <span data-feather="users"></span>
+              Group expense
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="personal.jsp">
+              <span data-feather="bar-chart-2"></span>
+              Personal expense
+            </a>
+          </li>
+                  </ul>
+      </div>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+     
+
+
+      </div>
+        </main>
+
+       <div class="col-md-4" style="margin-left: 350px">
+			       	     
+        <span style="font-size: 20px"><b>Pending:</b></span>
+          <br>
+
+          			       	 <div class="list-group" style="width: 400px">
+          			       	 
+    <%   ArrayList<pendingpersonalrequests> requests=(ArrayList<pendingpersonalrequests>) session.getAttribute("requests");  
+    if (requests!=null){
+	for (int i=0;i<requests.size();i++) {   
+	%>
+		<form method="post">
+ 		<a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+          			    <div style="max-height: 15px" class="d-flex w-100 justify-content-between">
+          			      <h4 class="mb-1" style="font-size: 15px"><%= requests.get(i).getAmount() + " -> " + requests.get(i).getLender() %></h4>
+          			      <div class="btn-group btn-group-sm" role="group" aria-label="Basic example" style="margin-top: -10px">
+          			      <input type="number" name="reqId" value="<%=requests.get(i).getId() %>" hidden>
+          			  <button type="submit" formaction="acceptS" style="background-color: green;height: 35px" class="btn btn-secondary">Approve</button>
+          			  <button type="submit" formaction="rejectS" style="background-color: red;height: 35px" class="btn btn-secondary">Reject</button>
+          			</div>
+          			    </div>  
+          			  </a>
+         </form>
+<%}}%>
+          			       	 
+          			
+          			</div>
+
+
+
+       </div> 	
+
+        <div class="col-md-4" >
+                   
+          <span style="font-size: 20px"><b>Daily:</b></span>
+          <br>
+
+                         <div class="list-group" style="width: 400px">
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between">
+                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
+                      
+                    </div>
+                    
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
+                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
+                      
+                    </div>
+                    
+                  </a>
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
+                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
+                      
+                    </div>
+                  </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
+                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
+                      
+                    </div>
+                  </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
+                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
+                      
+                    </div>
+                  </a>
+                </div>
+
+
+
+       </div>   
+
+
+       <div class="col-md-4" style="margin-left: 350px;margin-top: 50px">
+                   
+          <span style="font-size: 20px"><b>Group:</b></span>
+          <br>
+          
+          
+          
+
+        
+
+                         <div class="list-group" style="width: 400px">
+                  <%   ArrayList<groupevent> gevents=(ArrayList<groupevent>) session.getAttribute("gevents");  
+				if (gevents!=null){
+                 for (int i=0;i<gevents.size();i++) {   
+%>
+
+ <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between">
+                      <h4 class="mb-1" style="font-size: 15px"><%=gevents.get(i).getDescription() + " - " + gevents.get(i).getTotalAmt() %></h4>
+                      
+                    </div>
+                    
+                  </a>
+<%}}%>
+                 
+                </div>
+
+
+
+       </div> 
+
+       <div class="col-md-4" style="margin-top: 50px">
+                   
+          <span style="font-size: 20px"><b>Personal:</b></span>
+          <br>
+
+                         <div class="list-group" style="width: 400px">
+                         
+                 
+                 <%   ArrayList<personalevent> pevents=(ArrayList<personalevent>) session.getAttribute("pevents");  
+				if (pevents!=null){
+                 for (int i=0;i<pevents.size();i++) {   
+%>
+
+ <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between">
+                      <h4 class="mb-1" style="font-size: 15px"><%=pevents.get(i).getAmount() + " :- " + pevents.get(i).getBorrower() + " <- " +  pevents.get(i).getLender()%></h4>
+                      
+                    </div>
+                    
+                  </a>
+<%}}%>
+                 
+                 
+                
+                </div>
+
+
+
+       </div> 
+
+
+
+
+  </div>
+</div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="${pageContext.request.contextPath}/assets/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+      <script src="${pageContext.request.contextPath}/assets/js/dashboard.js"></script>
+
+<%
+response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
+response.setHeader("Pragma", "no-cache");//1.0
+response.setHeader("Expires", "0");//proxies
+
+if(session.getAttribute("phone")==null)
+	response.sendRedirect("index.jsp");
+
+%>
+
+
+      </body>
+</html>

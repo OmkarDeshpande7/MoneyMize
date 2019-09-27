@@ -1,0 +1,757 @@
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 256
+Server version: 8.0.17 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| moneymize          |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.06 sec)
+
+mysql> drop database moneymize;
+Query OK, 8 rows affected (0.39 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\money.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\money.sql
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+ERROR 1046 (3D000): No database selected
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> create database moneymize;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> use moneymize;
+Database changed
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\money.sql
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 6 warnings (0.07 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 2 warnings (0.06 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.07 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.07 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 2 rows affected (0.01 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 2 warnings (0.06 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| moneymize          |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_funcytions.sql
+ERROR:
+Failed to open file 'C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_funcytions.sql', error: 2
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_functions.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected, 2 warnings (0.01 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_procedires.sql
+ERROR:
+Failed to open file 'C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_procedires.sql', error: 2
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_procedures.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc personalevent;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| amount   | int(11)     | YES  |     | NULL    |       |
+| status   | varchar(10) | YES  |     | NULL    |       |
+| lender   | char(11)    | YES  | MUL | NULL    |       |
+| borrower | char(11)    | YES  | MUL | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_procedures.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_triggers.sql
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '//
+
+CREATE TRIGGER onpersonalevent on personalevent after insert for each row
+B' at line 1
+ERROR 1054 (42S22): Unknown column 'new.lender' in 'where clause'
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'END //' at line 1
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_triggers.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'on personalevent after insert for each row
+BEGIN
+        update user set wallet=wallet' at line 1
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_triggers.sql
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call savepersonalevent(100,"unpaid","1111111111","2222222222");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from user;
++------------+-----------------+-------+--------+----------+
+| phone      | email           | name  | wallet | password |
++------------+-----------------+-------+--------+----------+
+| 1111111111 | sdfsd           | omkar |    123 | pass     |
+| 2222222222 | omkar@gmail.com | omkar |    200 | password |
++------------+-----------------+-------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> call savepersonalevent(100,"unpaid","1111111111","2222222222");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from user;
++------------+-----------------+-------+--------+----------+
+| phone      | email           | name  | wallet | password |
++------------+-----------------+-------+--------+----------+
+| 1111111111 | sdfsd           | omkar |    123 | pass     |
+| 2222222222 | omkar@gmail.com | omkar |    200 | password |
++------------+-----------------+-------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_triggers.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+ERROR 1359 (HY000): Trigger already exists
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_triggers.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call savepersonalevent(100,"unpaid","1111111111","2222222222");
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from user;
++------------+-----------------+-------+--------+----------+
+| phone      | email           | name  | wallet | password |
++------------+-----------------+-------+--------+----------+
+| 1111111111 | sdfsd           | omkar |     23 | pass     |
+| 2222222222 | omkar@gmail.com | omkar |    300 | password |
++------------+-----------------+-------+--------+----------+
+2 rows in set (0.00 sec)
+
+mysql> desc personalevent;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| amount   | int(11)     | YES  |     | NULL    |       |
+| status   | varchar(10) | YES  |     | NULL    |       |
+| lender   | char(11)    | YES  | MUL | NULL    |       |
+| borrower | char(11)    | YES  | MUL | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_moneymize |
++---------------------+
+| dailyexpenses       |
+| groupevent          |
+| notification        |
+| personalevent       |
+| user                |
+| useringroup         |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> show create table persoalevent;
+ERROR 1146 (42S02): Table 'moneymize.persoalevent' doesn't exist
+mysql> show create table personalevent;
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table         | Create Table                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| personalevent | CREATE TABLE `personalevent` (
+  `amount` int(11) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
+  `lender` char(11) DEFAULT NULL,
+  `borrower` char(11) DEFAULT NULL,
+  KEY `lender` (`lender`),
+  KEY `borrower` (`borrower`),
+  CONSTRAINT `personalevent_ibfk_1` FOREIGN KEY (`lender`) REFERENCES `user` (`phone`),
+  CONSTRAINT `personalevent_ibfk_2` FOREIGN KEY (`borrower`) REFERENCES `user` (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++---------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> alter table personalevent add eventId int primary key;
+ERROR 1062 (23000): Duplicate entry '0' for key 'PRIMARY'
+mysql> alter table personalevent add eventId int primary key;
+ERROR 1062 (23000): Duplicate entry '0' for key 'PRIMARY'
+mysql> select * from personalevent;
++--------+--------+------------+------------+
+| amount | status | lender     | borrower   |
++--------+--------+------------+------------+
+|    100 | unpaid | 1111111111 | 2222222222 |
+|    100 | unpaid | 1111111111 | 2222222222 |
+|    100 | unpaid | 1111111111 | 2222222222 |
++--------+--------+------------+------------+
+3 rows in set (0.00 sec)
+
+mysql> truncate personalevent;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> select * from personalevent;
+Empty set (0.01 sec)
+
+mysql> alter table personalevent add eventId int primary key;
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table personalevent modify eventId int auto_increment;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc personalevent;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| amount   | int(11)     | YES  |     | NULL    |                |
+| status   | varchar(10) | YES  |     | NULL    |                |
+| lender   | char(11)    | YES  | MUL | NULL    |                |
+| borrower | char(11)    | YES  | MUL | NULL    |                |
+| eventId  | int(11)     | NO   | PRI | NULL    | auto_increment |
++----------+-------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> create table persoaleventlog (amount int,
+    -> status varchar(10),
+    -> lender char(11),
+    -> borrower char(11),
+    -> eventId int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> alter table personaleventlog add foreign key (lender) references user(phone);
+ERROR 1146 (42S02): Table 'moneymize.personaleventlog' doesn't exist
+mysql> drop table persoaleventlog;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table persoaleventlog (amount int,
+    ->     -> status varchar(10),
+    ->     -> lender char(11),
+    ->     -> borrower char(11),
+    -> ^CventId int);
+mysql> create table personaleventlog (amount int,
+    ->     -> status varchar(10),
+    -> lender char(11),
+    -> borrower char(11),
+    -> eventId int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-> status varchar(10),
+lender char(11),
+borrower char(11),
+eventId int)' at line 2
+mysql> create table persoaleventlog (amount int,
+    -> status varchar(10),
+    -> lender char(11),
+    -> borrower char(11),
+    -> eventId int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> alter table personaleventlog add foreign key (lender) references user(phone);
+ERROR 1146 (42S02): Table 'moneymize.personaleventlog' doesn't exist
+mysql> show tables;
++---------------------+
+| Tables_in_moneymize |
++---------------------+
+| dailyexpenses       |
+| groupevent          |
+| notification        |
+| persoaleventlog     |
+| personalevent       |
+| user                |
+| useringroup         |
++---------------------+
+7 rows in set (0.00 sec)
+
+mysql> drop table persoaleventlog;
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table personaleventlog (amount int,
+    -> status varchar(10),
+    -> lender char(11),
+    -> borrower char(11),
+    -> eventId int);
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> alter table personaleventlog add foreign key (lender) references user(phone);
+Query OK, 0 rows affected (0.12 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table personaleventlog add foreign key (borrower) references user(phone);
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc personaleventlog;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| amount   | int(11)     | YES  |     | NULL    |       |
+| status   | varchar(10) | YES  |     | NULL    |       |
+| lender   | char(11)    | YES  | MUL | NULL    |       |
+| borrower | char(11)    | YES  | MUL | NULL    |       |
+| eventId  | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> source C:\Users\OmkarDeshpande\Desktop\MoneyMize\dbms_project\moneymize_triggers.sql
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected, 1 warning (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from personalevent;
+Empty set (0.01 sec)
+
+mysql>     INSERT INTO personaleventlog values (old.amount,"paid",old.lender,old.borrower,old.eventId);
+ERROR 1054 (42S22): Unknown column 'old.amount' in 'field list'
+mysql>     INSERT INTO personalevent values (123,"unpaid","2222222222",1);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql>     INSERT INTO personalevent values (123,"unpaid","2222222222","1111111111",1);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from personalevent;
++--------+--------+------------+------------+---------+
+| amount | status | lender     | borrower   | eventId |
++--------+--------+------------+------------+---------+
+|    123 | unpaid | 2222222222 | 1111111111 |       1 |
++--------+--------+------------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> delete from personalevent where eventId=1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from personaleventlog;
++--------+--------+------------+------------+---------+
+| amount | status | lender     | borrower   | eventId |
++--------+--------+------------+------------+---------+
+|    123 | paid   | 2222222222 | 1111111111 |       1 |
++--------+--------+------------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from personalevent;
+Empty set (0.00 sec)
+
+mysql>
