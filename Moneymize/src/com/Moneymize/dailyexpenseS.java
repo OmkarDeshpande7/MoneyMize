@@ -31,12 +31,10 @@ public class dailyexpenseS extends HttpServlet {
 	{
 		HttpSession session = request.getSession();
 		String phone = (String) session.getAttribute("phone");
-		int category = Integer.parseInt(request.getParameter("category"));
+		String category = request.getParameter("category");
 		int categoryamount = Integer.parseInt(request.getParameter("dailyamount"));
-		
-		Date date = new Date();
 	    dailyexpenseDao daod = new dailyexpenseDao();
-	    daod.insertDaily(category,categoryamount,date,phone,request);
+	    daod.insertDaily(category,categoryamount,phone,request);
 	    response.sendRedirect("dashboard.jsp");
 	}
 

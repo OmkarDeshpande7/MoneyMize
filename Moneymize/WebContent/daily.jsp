@@ -97,10 +97,10 @@
             <div class="input-group" >
               <select class="custom-select" id="inputGroupSelect04" name="category" >
                 <option selected>Choose...</option>
-                <option value="1">Breakfast</option>
-                <option value="2">Lunch</option>
-                <option value="3">Evening Breakfast</option>
-                <option value="4">Dinner</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Evening Breakfast">Evening Breakfast</option>
+                <option value="Dinner">Dinner</option>
               </select>
              
                 
