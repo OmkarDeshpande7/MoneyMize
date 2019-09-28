@@ -233,7 +233,12 @@
  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
                     <div style="max-height: 15px" class="d-flex w-100 justify-content-between">
                       <h4 class="mb-1" style="font-size: 15px"><%=pevents.get(i).getAmount() + " :- " + pevents.get(i).getBorrower() + " <- " +  pevents.get(i).getLender()%></h4>
-                      
+                      <form action="" method="post">
+                      <input type="number" value="<%= pevents.get(i).getEid() %>" name="eid" hidden>
+                      <%
+                      if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone"))) {%><button type="submit" formaction="payS" style="background-color: green;height: 20px;margin-top:0px;" class="btn btn-secondary">Pay</button>
+                      <%} %>
+                      </form>
                     </div>
                     
                   </a>

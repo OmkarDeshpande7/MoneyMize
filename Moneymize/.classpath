@@ -13,12 +13,12 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/shubh/Downloads/javax.servlet-api-3.1.0.jar">
+	<classpathentry kind="lib" path="C:/Users/OmkarDeshpande/Downloads/javax.servlet-api-3.0.1.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/shubh/OneDrive/Desktop/mysql-connector-java-8.0.17.jar">
+	<classpathentry kind="lib" path="C:/Users/OmkarDeshpande/Downloads/mysql-connector-java-8.0.17.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

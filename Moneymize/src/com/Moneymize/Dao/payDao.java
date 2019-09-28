@@ -17,9 +17,9 @@ import javax.servlet.http.HttpSession;
 import com.Moneymize.info.pendingpersonalrequests;
 import com.Moneymize.info.personalevent;
 
-public class acceptRequestdao {
+public class payDao {
 	
-	String sql1 = "call insertinpersonalevent(?)";
+	String sql1 = "call paymoney(?)";
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	 String sql4 = "select * from pendingpersonalrequests where borrower=?";
 
@@ -30,7 +30,7 @@ public class acceptRequestdao {
 		private Connection con;	
 		
    
-   public void accept(int pid,HttpServletRequest request) 
+   public void pay(int eid,HttpServletRequest request) 
    {
 	   HttpSession session = request.getSession();
 	  
@@ -41,7 +41,7 @@ public class acceptRequestdao {
 	   
 		    con = DriverManager.getConnection(url,username,password);
 			PreparedStatement st1 = con.prepareStatement(sql1);
-			st1.setInt(1,pid);
+			st1.setInt(1,eid);
 			st1.executeUpdate();
 			String uname = (String) session.getAttribute("phone");
 			

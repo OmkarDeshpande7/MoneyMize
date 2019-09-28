@@ -14,7 +14,7 @@ public class PersonalRequestdao
 	String username = "root";
 	String sql1 = "select * from pendingpersonalrequests where lender=?";
 	String sql = "insert into  pendingpersonalrequests (amount,lender,borrower) values(?,?,?)"; 
-	String password = "#ironmanROCKX64";
+	String password = "123456";
 	private Connection con;	
 	
 	

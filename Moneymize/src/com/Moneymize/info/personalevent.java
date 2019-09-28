@@ -2,6 +2,7 @@ package com.Moneymize.info;
 
 public class personalevent {
 int amount;
+int eid;
 String lender;
 String borrower;
 public int getAmount() {
@@ -21,6 +22,12 @@ public String getBorrower() {
 }
 public void setBorrower(String borrower) {
 	this.borrower = borrower;
+}
+public int getEid() {
+	return eid;
+}
+public void setEid(int eid) {
+	this.eid = eid;
 }
 
 }

@@ -25,7 +25,7 @@ public class LoginDao {
 
 	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 	String username = "root";
-	String password = "#ironmanROCKX64";
+	String password = "123456";
 	
 	private Connection con;	
 	
@@ -81,6 +81,7 @@ public class LoginDao {
 					newevent.setAmount((Integer.parseInt(rs1.getString(1))));
 					newevent.setBorrower(rs1.getString(3));
 					newevent.setLender(rs1.getString(2));
+					newevent.setEid(Integer.parseInt(rs1.getString(4)));
 					pevents.add(newevent);
 					session.setAttribute("pevents",pevents);
 	
