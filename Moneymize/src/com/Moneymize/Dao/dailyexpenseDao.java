@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class dailyexpenseDao 
 {
-	String sql0 = "INSERT INTO dailyexpenses (user,total_amount,date) values (?,?,?)";
+	String sql0 = "INSERT INTO dailyexpense (user,totalAmount,date) values (?,?,?)";
 	String sql1 = "INSERT INTO dailycategory (expenseId,categoryId,amount) values (?,?,?)";
 	String sql2 = "select name from categories where categoryId=?";
 	String sql3 = "select * from dailycategory where expenseId=?";
@@ -17,7 +17,7 @@ public class dailyexpenseDao
 	String username = "root";
 	String password = "#ironmanROCKX64";
 	private Connection con;	
-	public boolean insertDaily(int category,int categoryamount,Date date,String uname)
+	public boolean insertDaily(int category,int categoryamount,java.sql.Date date,String uname)
 	{
 	
 		try {
@@ -27,7 +27,7 @@ public class dailyexpenseDao
 			PreparedStatement st = con.prepareStatement(sql0);
 			st.setString(1, uname);
 			st.setInt(2, categoryamount);
-			st.setDate(3, (java.sql.Date) date);
+			st.setDate(3, date);
 			System.out.println("connecting...");
 			 st.executeUpdate();
 			 ResultSet rs = st.getGeneratedKeys();
