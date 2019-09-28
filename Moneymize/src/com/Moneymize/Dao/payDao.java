@@ -22,10 +22,11 @@ public class payDao {
 	String sql1 = "call paymoney(?)";
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	 String sql4 = "select * from pendingpersonalrequests where borrower=?";
+	 String sql7 = "select * from user where phone=?";
 
 		String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 		String username = "root";
-		String password = "123456";
+		String password = "#ironmanROCKX64";
 		int pid;
 		private Connection con;	
 		
@@ -82,7 +83,14 @@ public class payDao {
 					session.setAttribute("pevents",peventstr);
 					
 				}
-			
+				PreparedStatement st7 = con.prepareStatement(sql7);
+				st7.setString(1, uname);
+				ResultSet rs7 = st7.executeQuery();
+				if(rs7.absolute(1))
+				{
+					String wallets = rs7.getString(4);
+					session.setAttribute("walletst",wallets);
+				}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

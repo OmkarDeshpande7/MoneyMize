@@ -13,15 +13,18 @@ public class PersonalRequestdao
 	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 	String username = "root";
 	String sql1 = "select * from pendingpersonalrequests where lender=?";
-	String sql = "insert into  pendingpersonalrequests (amount,lender,borrower) values(?,?,?)"; 
-	String password = "123456";
+	String sql = "insert into  pendingpersonalrequests (amount,lender,borrower) values(?,?,?)";
+	 String sql7 = "select * from user where phone=?";
+
+	String password = "#ironmanROCKX64";
 	private Connection con;	
 	
 	
-	public boolean createrequest(String lender,String borrower,String amount){
+	public boolean createrequest(String lender,String borrower,String amount,HttpServletRequest request){
 		
 	try {
-		
+		HttpSession session = request.getSession();
+
 		
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 	    con = DriverManager.getConnection(url,username,password);
@@ -33,6 +36,15 @@ public class PersonalRequestdao
 
 		System.out.println("connecting...");
 		int rs = st.executeUpdate();
+		String uname = (String) session.getAttribute("phone");
+		PreparedStatement st7 = con.prepareStatement(sql7);
+		st7.setString(1, uname);
+		ResultSet rs7 = st7.executeQuery();
+		if(rs7.absolute(1))
+		{
+			String wallets = rs7.getString(4);
+			session.setAttribute("walletst",wallets);
+		}
 		return true;
 		
 		

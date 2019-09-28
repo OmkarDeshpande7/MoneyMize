@@ -1,7 +1,7 @@
 package com.Moneymize;
 
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -33,10 +33,10 @@ public class dailyexpenseS extends HttpServlet {
 		String phone = (String) session.getAttribute("phone");
 		int category = Integer.parseInt(request.getParameter("category"));
 		int categoryamount = Integer.parseInt(request.getParameter("dailyamount"));
-		java.util.Date utildate = new java.util.Date();
-		java.sql.Date date = new java.sql.Date(utildate.getTime()); 
+		
+		Date date = new Date();
 	    dailyexpenseDao daod = new dailyexpenseDao();
-	    daod.insertDaily(category,categoryamount,date,phone);
+	    daod.insertDaily(category,categoryamount,date,phone,request);
 	    response.sendRedirect("dashboard.jsp");
 	}
 

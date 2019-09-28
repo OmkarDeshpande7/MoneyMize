@@ -29,7 +29,7 @@ public class personaleventS extends HttpServlet {
 		String borrower = request.getParameter("borrower");
 		String amount = request.getParameter("amount");			
 		PersonalRequestdao daoP = new PersonalRequestdao();
-		daoP.createrequest(lender,borrower,amount);
+		daoP.createrequest(lender,borrower,amount,request);
 		response.sendRedirect("dashboard.jsp");
 		
 	}

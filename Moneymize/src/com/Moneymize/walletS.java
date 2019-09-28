@@ -35,9 +35,9 @@ public class walletS extends HttpServlet {
 		wallet = wallet + addwallet;
 		
 		Walletdao daoW = new Walletdao();
-		daoW.add(phone, wallet);
-		String w = Integer.toString(wallet);
-		session.setAttribute("walletst",w);
+		
+		daoW.add(phone, wallet,request);
+		
 		response.sendRedirect("wallet.jsp");
 	}
 

@@ -22,18 +22,18 @@ public class acceptRequestdao {
 	String sql1 = "call insertinpersonalevent(?)";
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	 String sql4 = "select * from pendingpersonalrequests where borrower=?";
+	 String sql7 = "select * from user where phone=?";
 
 		String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 		String username = "root";
-		String password = "123456";
+		String password = "#ironmanROCKX64";
 		int pid;
 		private Connection con;	
 		
-   
    public void accept(int pid,HttpServletRequest request) 
    {
 	   HttpSession session = request.getSession();
-	  
+	   pid = Integer.parseInt(request.getParameter("reqId"));
 	   ArrayList<personalevent> peventstr=(ArrayList<personalevent>) session.getAttribute("pevents");
 	ArrayList<pendingpersonalrequests> requestr=(ArrayList<pendingpersonalrequests>) session.getAttribute("requests");	
 	 try {
@@ -81,6 +81,15 @@ public class acceptRequestdao {
 					peventstr.add(neweventss);
 					session.setAttribute("pevents",peventstr);
 					
+				}
+				
+				PreparedStatement st7 = con.prepareStatement(sql7);
+				st7.setString(1, uname);
+				ResultSet rs7 = st7.executeQuery();
+				if(rs7.absolute(1))
+				{
+					String wallets = rs7.getString(4);
+					session.setAttribute("walletst",wallets);
 				}
 			
 		} catch (Exception e) {

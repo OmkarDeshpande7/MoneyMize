@@ -1,13 +1,18 @@
 package com.Moneymize.Dao;
 import java.sql.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 
 public class RegisterDao {
 	String sql1 = "select * from user where phone=?";
 	String sql2 = "insert into user values(?,?,?,?,?)";
+	 String sql7 = "select * from user where phone=?";
+
 	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 	String username = "root";
-	String password = "123456";
+	String password = "#ironmanROCKX64";
 	private Connection con;	
 	public boolean check(String uname)
 	{
@@ -39,6 +44,7 @@ public class RegisterDao {
 	public boolean insert(String username,String password,String email,String name,int wallet)
 	{
 		try {
+
 		PreparedStatement st = con.prepareStatement(sql2);
 		st.setString(1, username);
 		st.setString(2, email);
@@ -48,6 +54,8 @@ public class RegisterDao {
 	
 		System.out.println("connecting...");
 		int rs = st.executeUpdate();
+		
+		
 		return true;
 		
 		
