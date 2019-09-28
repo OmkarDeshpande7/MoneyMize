@@ -15,7 +15,7 @@ public class dailyexpenseDao
 	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 	
 	String username = "root";
-	String password = "#ironmanROCKX64";
+	String password = "123456";
 	private Connection con;	
 	public boolean insertDaily(int category,int categoryamount,Date date,String uname)
 	{

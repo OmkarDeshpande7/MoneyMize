@@ -49,6 +49,17 @@ BEGIN
 END //
 
 
+DROP PROCEDURE IF EXISTS paymoney//
+
+CREATE PROCEDURE paymoney (IN id int) 
+BEGIN
+	
+		update user set wallet = wallet - (select amount from personalevent where eid = id) where phone=(select borrower from personalevent where eid=id);
+		update user set wallet = wallet + (select amount from personalevent where eid = id) where phone=(select lender from personalevent where eid=id);
+		delete from personalevent where eid=id;
+END //
+
+
 
 
 
