@@ -1,26 +1,23 @@
+<!DOCTYPE html>
 
-<!doctype html>
 <html lang="en">
-<head>
+  <head>
+    <title>Welcome to Moneymize</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--  Fonts and icons  -->
+      <!--     Fonts and icons     -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <!-- Black Dashboard CSS -->
+    <link href="${pageContext.request.contextPath}/assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  </head>
+  <body>
 
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="icon" href="Favicon.png">
-   <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="../assets/js/bootstrap.min.js"></script>
-     <script src="../assets/jquery/jquery.min.js"></script>
-    <title>Welcome to Moneymize</title>
-</head>
-<body>
-
-<%
+    <%
 
 session.setAttribute("phone",null);
 session.setAttribute("events",null);
@@ -36,86 +33,58 @@ alert("Invalid phone number or password");
 session.setAttribute("errorMessage", null);
 %>
 
-
-
-<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
-    <div class="container">
-        <a class="navbar-brand" href="#">MoneyMize</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Register.jsp">Register</a>
-                </li>
-            </ul>
-
+<div class="wrapper ">
+  
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" style="color: white;margin-top: 30px">MoneyMize</a>
         </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="content">
+      <div class="container-fluid">
+         <!-- your content here -->
+        <div class="col-md-5" style="margin-left:10vw">
+	        <div class="card">
+				  <div class="card-body">
+				    <form method="post">
+				      <div class="form-group">
+				        <label>Mobile</label>
+				        <input type="text" class="form-control" maxlength="10" id="mobile" name="mobile" placeholder="Enter mobile" required autofocus>
+				      </div>
+				      <div class="form-group">
+				        <label>Password</label>
+				        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+				      </div>
+
+				      <button type="submit" class="btn btn-primary" value="Login" formaction="Login">Submit</button>
+				      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href=""><small>New user? Sign up</small></a>
+				    </form>
+				  </div>
+			</div>
+		</div>
+
+
+      </div>
     </div>
-</nav>
-
-<main class="login-form">
-    <div class="cotainer">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Login</div>
-                    <div class="card-body">
-                        <form action="Login" method="post" target="_self">
-                            <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">Mobile no.</label>
-                                <div class="col-md-6">
-                                    <input type="text" id="mobile" class="form-control" maxlength="10"  name="mobile" required autofocus>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                <div class="col-md-6">
-                                    <input type="password" id="password" class="form-control" name="password" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember"> Remember Me
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary" value="Login" onclick="onSubmit();">
-                                    Login
-                                </button>
-                                <a href="#" class="btn btn-link">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-
-
+    
+  </div>
 </div>
-</main>
-
-
-
-
-
-
-
-</body>
+<!--   Core JS Files   -->
+<script src="${pageContext.request.contextPath}/assets/js/core/jquery.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!--  Google Maps Plugin    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Chartist JS -->
+<script src="${pageContext.request.contextPath}/assets/js/plugins/chartjs.min.js"></script>
+<!--  Notifications Plugin    -->
+<script src="${pageContext.request.contextPath}/assets/js/plugins/bootstrap-notify.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="${pageContext.request.contextPath}/assets/js/black-dashboard.js?v=1.0.0" type="text/javascript"></script></body>
 </html>
