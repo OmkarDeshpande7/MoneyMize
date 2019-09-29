@@ -24,12 +24,9 @@ DROP TABLE IF EXISTS `dailycategory`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dailycategory` (
   `expenseId` int(11) DEFAULT NULL,
-  `user` varchar(11) DEFAULT NULL,
   `category` varchar(30) DEFAULT NULL,
   `amount` int(11) DEFAULT NULL,
-  KEY `user` (`user`),
   KEY `expenseId` (`expenseId`),
-  CONSTRAINT `dailycategory_ibfk_2` FOREIGN KEY (`user`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `dailycategory_ibfk_3` FOREIGN KEY (`expenseId`) REFERENCES `dailyexpenses` (`expenseId`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +37,7 @@ CREATE TABLE `dailycategory` (
 
 LOCK TABLES `dailycategory` WRITE;
 /*!40000 ALTER TABLE `dailycategory` DISABLE KEYS */;
-INSERT INTO `dailycategory` VALUES (3,'2525252525','Lunch',270),(3,'2525252525','Breakfast',100),(1,'7721071250','Breakfast',100),(4,'1111111111','Evening Breakfast',100);
+INSERT INTO `dailycategory` VALUES (3,'Lunch',270),(3,'Breakfast',100),(1,'Breakfast',100),(4,'Evening Breakfast',100),(1,'Breakfast',100),(1,'Breakfast',100),(1,'Breakfast',100),(1,'lunch',1000),(1,'lunch',1000),(1,'Dinner',200),(1,'Evening Breakfast',270),(3,'Lunch',300);
 /*!40000 ALTER TABLE `dailycategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +141,7 @@ CREATE TABLE `pendingpersonalrequests` (
   KEY `borrower` (`borrower`),
   CONSTRAINT `pendingpersonalrequests_ibfk_1` FOREIGN KEY (`lender`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `pendingpersonalrequests_ibfk_2` FOREIGN KEY (`borrower`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +170,7 @@ CREATE TABLE `personalevent` (
   KEY `borrower` (`borrower`),
   CONSTRAINT `personalevent_ibfk_1` FOREIGN KEY (`lender`) REFERENCES `user` (`phone`),
   CONSTRAINT `personalevent_ibfk_2` FOREIGN KEY (`borrower`) REFERENCES `user` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +238,7 @@ CREATE TABLE `personaleventlog` (
 
 LOCK TABLES `personaleventlog` WRITE;
 /*!40000 ALTER TABLE `personaleventlog` DISABLE KEYS */;
-INSERT INTO `personaleventlog` VALUES (100,'2525252525','7709833124',10),(123456,'7709833124','2525252525',11),(1000,'7721071250','2525252525',12),(500,'1111111111','2525252525',13),(1000,'1111111111','2525252525',15),(500,'7721071250','2525252525',14);
+INSERT INTO `personaleventlog` VALUES (100,'2525252525','7709833124',10),(123456,'7709833124','2525252525',11),(1000,'7721071250','2525252525',12),(500,'1111111111','2525252525',13),(1000,'1111111111','2525252525',15),(500,'7721071250','2525252525',14),(1000,'7721071250','2525252525',16),(3456,'1111111111','2525252525',17),(1000,'7721071250','2525252525',18);
 /*!40000 ALTER TABLE `personaleventlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,7 +265,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1111111111','sdfsd','omkar',1000,'pass'),('1234567890','shubhamdarak37@gmil.com','shubham',1000,'1234'),('2222222222','omkar@gmail.com','omkar',1000,'password'),('2525252525','deshpandeomkar77@gmail.com','omkar deshpande',1230,'123456'),('7350766736','atharva.chavan29@gmail.com','atharva chvan',1000,'atharva123'),('7350766738','gaikwadsampada8@gmail.com','atharva',1000,'sam29'),('770983312','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7709833124','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7721065893','shubhamdarak37@gmil.com','atharva',1000,'at'),('7721071250','shubhamdarak37@gmil.com','shubham',1900,'sd'),('7721088542','shubhamdarak37@gmil.com','omkar',1000,'omkar'),('7789456123','shubhamdarak37@gmil.com','shubham',1000,'sd'),('7972663093','dschandak@gmail.com','Devesh Chandak',1000,'devesh_111'),('9876543210','user@gmail.com','usera',1000,'9876543210');
+INSERT INTO `user` VALUES ('1111111111','sdfsd','omkar',1000,'pass'),('1234567890','shubhamdarak37@gmil.com','shubham',1000,'1234'),('2222222222','omkar@gmail.com','omkar',1000,'password'),('2525252525','deshpandeomkar77@gmail.com','omkar deshpande',930,'123456'),('7350766736','atharva.chavan29@gmail.com','atharva chvan',1000,'atharva123'),('7350766738','gaikwadsampada8@gmail.com','atharva',1000,'sam29'),('770983312','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7709833124','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7721065893','shubhamdarak37@gmil.com','atharva',1000,'at'),('7721071250','shubhamdarak37@gmil.com','shubham',430,'sd'),('7721088542','shubhamdarak37@gmil.com','omkar',1000,'omkar'),('7789456123','shubhamdarak37@gmil.com','shubham',1000,'sd'),('7972663093','dschandak@gmail.com','Devesh Chandak',1000,'devesh_111'),('9876543210','user@gmail.com','usera',1000,'9876543210');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,13 +410,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `savedailyexpenses`(IN phone varchar(11),IN amount int,IN category varchar(30))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `savedailyexpenses`(IN phones varchar(11),IN amount int,IN category varchar(30))
 BEGIN
-IF NOT EXISTS (select * from dailyexpenses where Date = CURRENT_DATE and user = phone) then
-	INSERT INTO dailyexpenses(user,Date,total_amount) values(phone,CURRENT_DATE,0);
+IF NOT EXISTS (select * from dailyexpenses where Date = CURRENT_DATE and user = phones) then
+	INSERT INTO dailyexpenses(user,Date,total_amount) values(phones,CURRENT_DATE,0);
 	end if;
-	INSERT INTO dailycategory(expenseId,user,category,amount) values((select expenseId from dailyexpenses where user=phone),phone,category,amount);
-	update user set wallet = wallet - amount where phone = user;
+	INSERT INTO dailycategory(expenseId,category,amount) values((select expenseId from dailyexpenses where user=phones),category,amount);
+	update user set wallet = wallet - amount where phone = phones;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -493,4 +490,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-29  1:37:55
+-- Dump completed on 2019-09-29 18:16:54
