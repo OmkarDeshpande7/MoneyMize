@@ -123,8 +123,8 @@ public class LoginDao {
 				while(rs8.next())
 				{
 					dailyexpense dailyevent = new dailyexpense();
-					dailyevent.setAmount((Integer.parseInt(rs8.getString(4))));
-					dailyevent.setCategory(rs8.getString(3));
+					dailyevent.setAmount((Integer.parseInt(rs8.getString(3))));
+					dailyevent.setCategory(rs8.getString(2));
 					devents.add(dailyevent);
 					session.setAttribute("devents",devents);
 				}

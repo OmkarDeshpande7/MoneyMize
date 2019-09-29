@@ -30,7 +30,7 @@ BEGIN
 IF NOT EXISTS (select * from dailyexpenses where Date = CURRENT_DATE and user = phones) then
 	INSERT INTO dailyexpenses(user,Date,total_amount) values(phones,CURRENT_DATE,0);
 	end if;
-	INSERT INTO dailycategory(expenseId,user,category,amount) values((select expenseId from dailyexpenses where user=phones),phones,category,amount);
+	INSERT INTO dailycategory(expenseId,category,amount) values((select expenseId from dailyexpenses where user=phones),category,amount);
 	update user set wallet = wallet - amount where phone = phones;
 END //
 

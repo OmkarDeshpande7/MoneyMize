@@ -58,8 +58,8 @@ public class dailyexpenseDao
 				while(rs2.next())
 				{
 					dailyexpense newdeventss = new dailyexpense();
-					newdeventss.setAmount((Integer.parseInt(rs2.getString(4))));
-					newdeventss.setCategory(rs2.getString(3));
+					newdeventss.setAmount((Integer.parseInt(rs2.getString(3))));
+					newdeventss.setCategory(rs2.getString(2));
 					devents.add(newdeventss);
 					session.setAttribute("devents",devents);
 				}
