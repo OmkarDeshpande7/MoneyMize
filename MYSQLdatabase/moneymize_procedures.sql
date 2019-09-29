@@ -25,13 +25,13 @@ END //
 
 DROP PROCEDURE IF EXISTS savedailyexpenses//
 
-CREATE PROCEDURE savedailyexpenses (IN phone varchar(11),IN amount int,IN category varchar(30)) 
+CREATE PROCEDURE savedailyexpenses (IN phones varchar(11),IN amount int,IN category varchar(30)) 
 BEGIN
-IF NOT EXISTS (select * from dailyexpenses where Date = CURRENT_DATE and user = phone) then
-	INSERT INTO dailyexpenses(user,Date,total_amount) values(phone,CURRENT_DATE,0);
+IF NOT EXISTS (select * from dailyexpenses where Date = CURRENT_DATE and user = phones) then
+	INSERT INTO dailyexpenses(user,Date,total_amount) values(phones,CURRENT_DATE,0);
 	end if;
-	INSERT INTO dailycategory(expenseId,user,category,amount) values((select expenseId from dailyexpenses where user=phone),phone,category,amount);
-	update user set wallet = wallet - amount where phone = user;
+	INSERT INTO dailycategory(expenseId,user,category,amount) values((select expenseId from dailyexpenses where user=phones),phones,category,amount);
+	update user set wallet = wallet - amount where phone = phones;
 END //
 
 

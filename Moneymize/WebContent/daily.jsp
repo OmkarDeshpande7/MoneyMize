@@ -123,40 +123,27 @@
 
         </div>
 
-        <div style="margin-left: 350px;margin-top: 50px" class="col-md-9">
-         <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-         </table>
-        </div>
+         <div class="col-md-4" >
+                   
+          <span style="font-size: 20px"><b>Daily:</b></span>
+          <br>
+
+                         <div class="list-group" style="width: 400px">
+                         <%   ArrayList<dailyexpense> devents=(ArrayList<dailyexpense>) session.getAttribute("devents");  
+    if (devents!=null){
+	for (int i=0;i<devents.size();i++) {   
+	%>
+                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between">
+                      <h4 class="mb-1" style="font-size: 15px"><%= devents.get(i).getAmount() + " -> " + devents.get(i).getCategory() %></h4>
+                    </div>
+                  </a>  
+                  <%}}%>
+                    
+                </div>
 
 
+       </div>   
 
 
   </div>

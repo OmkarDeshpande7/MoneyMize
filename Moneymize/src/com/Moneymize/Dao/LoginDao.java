@@ -19,9 +19,9 @@ public class LoginDao {
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	String sql3 = "select * from pendingpersonalrequests where borrower=?";
 	String sql4 = "select * from groupevent where owner=?";
-	 String sql5 = "delete from pendingpersonalrequests where pid=?";
-	 String sql6 = "select * from pendingpersonalrequests where borrower=?";
 	 String sql7 = "select * from user where phone=?";
+	 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=CURRENT_DATE)";
+	 
 
 	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 	String username = "root";
@@ -64,6 +64,10 @@ public class LoginDao {
 				PreparedStatement st3 = con.prepareStatement(sql4);
 				st3.setString(1, uname);
 				ResultSet rs3 = st3.executeQuery();
+				
+				PreparedStatement st8 = con.prepareStatement(sql8);
+				st8.setString(1, uname);
+				ResultSet rs8 = st8.executeQuery();
 				
 				PreparedStatement st7 = con.prepareStatement(sql7);
 				st7.setString(1, uname);
@@ -115,6 +119,16 @@ public class LoginDao {
 					session.setAttribute("gevents",gevents);
 	
 				}
+				
+				while(rs8.next())
+				{
+					dailyexpense dailyevent = new dailyexpense();
+					dailyevent.setAmount((Integer.parseInt(rs8.getString(4))));
+					dailyevent.setCategory(rs8.getString(3));
+					devents.add(dailyevent);
+					session.setAttribute("devents",devents);
+				}
+				
 				session.setAttribute("pevents",pevents);
 				session.setAttribute("requests",requests);
 				session.setAttribute("gevents",gevents);

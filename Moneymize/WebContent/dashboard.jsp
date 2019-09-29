@@ -1,5 +1,7 @@
 <!doctype html>
 <%@page import="com.Moneymize.info.groupevent"%>
+<%@page import="com.Moneymize.info.dailyexpense"%>
+
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="java.util.ArrayList"%>
@@ -147,40 +149,18 @@
           <br>
 
                          <div class="list-group" style="width: 400px">
+                         <%   ArrayList<dailyexpense> devents=(ArrayList<dailyexpense>) session.getAttribute("devents");  
+    if (devents!=null){
+	for (int i=0;i<devents.size();i++) {   
+	%>
                   <a href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
                     <div style="max-height: 15px" class="d-flex w-100 justify-content-between">
-                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
-                      
+                      <h4 class="mb-1" style="font-size: 15px"><%= devents.get(i).getAmount() + " -> " + devents.get(i).getCategory() %></h4>
                     </div>
+                  </a>  
+                  <%}}%>
                     
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
-                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
-                      
-                    </div>
-                    
-                  </a>
-                  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
-                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
-                      
-                    </div>
-                  </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
-                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
-                      
-                    </div>
-                  </a>
-                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                    <div style="max-height: 15px" class="d-flex w-100 justify-content-between" >
-                      <h4 class="mb-1" style="font-size: 15px">List group item heading</h4>
-                      
-                    </div>
-                  </a>
                 </div>
-
 
 
        </div>   
