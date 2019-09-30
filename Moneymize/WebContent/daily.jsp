@@ -160,10 +160,10 @@
                   <h5 style="margin-top: 10px">Show for date:</h5>
                
                 <div class="col">
-                  <input type="date" class="form-control" placeholder="mm/dd/yyyy">
+                  <input type="date" class="form-control" placeholder="yyyy/mm/dd" name = "Date">
                 </div>
                 <div class="col">
-                  <button class="btn btn-success btn-round btn-sm animation-on-hover" type="button">Show</button>
+                  <button class="btn btn-success btn-round btn-sm animation-on-hover" type="submit" formaction="showbyDateS"  type="button">Show</button>
                 </div>
               </div>
             </form>
@@ -179,7 +179,11 @@
         </tr>
     </thead>
     <tbody>
-       <%   ArrayList<dailyexpense> devents=(ArrayList<dailyexpense>) session.getAttribute("devents");  
+       <%   ArrayList<dailyexpense> devents=(ArrayList<dailyexpense>) session.getAttribute("devents"); 
+         ArrayList<dailyexpense> sevents=(ArrayList<dailyexpense>) session.getAttribute("sevents"); 
+
+       if(session.getAttribute("show")== "NO")
+       {
     if (devents!=null){
   for (int i=0;i<devents.size();i++) {   
   %>
@@ -187,7 +191,21 @@
             <td><%= devents.get(i).getCategory() %></td>
             <td><%= devents.get(i).getAmount() %></td>
         </tr>
-  <%}}%>           
+  <%}
+  }
+    }
+    else
+       {
+    	 if (sevents!=null){
+    		  for (int i=0;i<sevents.size();i++) {   
+    	 %>  
+    	    <tr>
+            <td><%= sevents.get(i).getCategory() %></td>
+            <td><%= sevents.get(i).getAmount() %></td>
+        </tr>
+  <%}
+  }
+       } %>         
     </tbody>
 </table>
         

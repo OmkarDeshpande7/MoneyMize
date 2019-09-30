@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,7 +16,8 @@ import com.Moneymize.info.pendingpersonalrequests;
 
 public class dailyexpenseDao 
 {
-	String sql0 ="call savedailyexpenses(?,?,?)"; 
+	String sql0 ="call savedailyexpenses(?,?,?)";
+
 	 String sql7 = "select * from user where phone=?";
 	 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=CURRENT_DATE)";
 
@@ -28,7 +30,6 @@ public class dailyexpenseDao
 	{
 		HttpSession session = request.getSession();
 		ArrayList<dailyexpense> devents=(ArrayList<dailyexpense>) session.getAttribute("devents"); 
-
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		    con = DriverManager.getConnection(url,username,password);
@@ -78,10 +79,62 @@ public class dailyexpenseDao
 				String wallets = rs7.getString(4);
 				session.setAttribute("walletst",wallets);
 			}
+			session.setAttribute("show", "NO");
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
 		return true;
 	}
-}
+	
+	public boolean showdatewise(String date,HttpServletRequest request)
+	{
+		List<dailyexpense> sevents = new ArrayList<dailyexpense>();
+
+		 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=?)";
+		 HttpSession session = request.getSession();
+			String uname = (String) session.getAttribute("phone");
+
+			try {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+			    con = DriverManager.getConnection(url,username,password);
+			    System.out.println("connecting...db");
+			    sevents.removeAll(sevents);
+				
+				PreparedStatement st3 = con.prepareStatement(sql8);
+				st3.setString(1, uname);
+				st3.setString(2, date);
+				ResultSet rs3 = st3.executeQuery();
+				if(rs3.absolute(1))
+				{
+					PreparedStatement st2 = con.prepareStatement(sql8);
+					st2.setString(1, uname);
+					st2.setString(2, date);
+
+					ResultSet rs2 = st2.executeQuery();
+					while(rs2.next())
+					{
+						dailyexpense newdeventss = new dailyexpense();
+						newdeventss.setAmount((Integer.parseInt(rs2.getString(3))));
+						newdeventss.setCategory(rs2.getString(2));
+						sevents.add(newdeventss);
+						session.setAttribute("sevents",sevents);
+					}
+				
+				}
+				else
+				{
+					session.setAttribute("sevents",sevents);
+					return false;
+				}
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
+			session.setAttribute("show", "YES");
+
+			return true;
+		}
+				
+	}
+

@@ -62,7 +62,7 @@ session.setAttribute("errorMessage", null);
 				      </div>
 
 				      <button type="submit" class="btn btn-primary" value="Login" formaction="Login">Submit</button>
-				      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href=""><small>New user? Sign up</small></a>
+				      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="Register.jsp"><small>New user? Sign up</small></a>
 				    </form>
 				  </div>
 			</div>

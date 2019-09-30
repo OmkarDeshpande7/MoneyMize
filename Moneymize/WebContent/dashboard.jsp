@@ -186,7 +186,7 @@
 	%>
                       <tr>
                         <td>
-                          <p class="text-muted"><%= devents.get(i).getAmount() + " -> " + devents.get(i).getCategory() %></p>
+                          <p class="text"><%= devents.get(i).getAmount() + " -> " + devents.get(i).getCategory() %></p>
                         </td>
                       </tr>
                      <%}}%> 
@@ -335,6 +335,7 @@
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
 response.setHeader("Pragma", "no-cache");//1.0
 response.setHeader("Expires", "0");//proxies
+session.setAttribute("show", "NO");
 
 if(session.getAttribute("phone")==null)
   response.sendRedirect("index.jsp");
