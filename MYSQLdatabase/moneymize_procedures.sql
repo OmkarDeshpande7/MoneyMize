@@ -8,12 +8,17 @@ END //
 
 
 DROP PROCEDURE IF EXISTS savegroupevent//
-
-CREATE PROCEDURE savegroupevent (IN id int ,IN description varchar(100),IN edate date,IN totalamt int,IN owner char(11)) 
+CREATE PROCEDURE savegroupevent (IN description varchar(100),IN edate date,IN totalamt int,IN owner char(11)) 
 BEGIN
-	INSERT INTO groupevent values(id,description,edate,totalamt,owner);
+	INSERT INTO groupevent(description,date,totalAmt,owner) values(description,edate,totalamt,owner);
 END //
 
+
+DROP PROCEDURE IF EXISTS adduseringroup//
+CREATE PROCEDURE adduseringroup (IN amt int,IN eid int,IN user char(11)) 
+BEGIN
+	INSERT INTO useringroup values(amt,eid,user);
+END //
 
 DROP PROCEDURE IF EXISTS savepersonalevent//
 

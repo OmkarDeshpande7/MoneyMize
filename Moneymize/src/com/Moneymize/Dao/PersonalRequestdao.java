@@ -10,13 +10,13 @@ import javax.servlet.http.HttpSession;
 
 public class PersonalRequestdao 
 {
-	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+	String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 	String username = "root";
 	String sql1 = "select * from pendingpersonalrequests where lender=?";
 	String sql = "insert into  pendingpersonalrequests (amount,lender,borrower) values(?,?,?)";
 	 String sql7 = "select * from user where phone=?";
 
-	String password = "#ironmanROCKX64";
+	String password = "123456";
 	private Connection con;	
 	
 	

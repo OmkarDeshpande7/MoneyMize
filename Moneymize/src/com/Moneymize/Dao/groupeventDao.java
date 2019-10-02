@@ -17,9 +17,9 @@ import javax.servlet.http.HttpSession;
 import com.Moneymize.info.pendingpersonalrequests;
 import com.Moneymize.info.personalevent;
 
-public class payDao {
+public class groupeventDao {
 	
-	String sql1 = "call paymoney(?)";
+	String sql1 = "call savegroupevent(?,?,?,?)";
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	 String sql4 = "select * from pendingpersonalrequests where borrower=?";
 	 String sql7 = "select * from user where phone=?";
@@ -30,11 +30,9 @@ public class payDao {
 		int pid;
 		private Connection con;	
 		
-   
-   public void pay(int eid,HttpServletRequest request) 
+   public void savegroupevent(String description,String date,int totalamt,String owner,HttpServletRequest request) 
    {
 	   HttpSession session = request.getSession();
-	  
 	   ArrayList<personalevent> peventstr=(ArrayList<personalevent>) session.getAttribute("pevents");
 	ArrayList<pendingpersonalrequests> requestr=(ArrayList<pendingpersonalrequests>) session.getAttribute("requests");	
 	 try {
@@ -42,8 +40,11 @@ public class payDao {
 	   
 		    con = DriverManager.getConnection(url,username,password);
 			PreparedStatement st1 = con.prepareStatement(sql1);
-			st1.setInt(1,eid);
-			st1.executeUpdate();
+			st1.setString(1,description);
+			st1.setString(2,date);
+			st1.setInt(3,totalamt);
+			st1.setString(4,owner);
+			st1.executeQuery();
 			String uname = (String) session.getAttribute("phone");
 			
 			peventstr.clear();
@@ -83,6 +84,7 @@ public class payDao {
 					session.setAttribute("pevents",peventstr);
 					
 				}
+				
 				PreparedStatement st7 = con.prepareStatement(sql7);
 				st7.setString(1, uname);
 				ResultSet rs7 = st7.executeQuery();
@@ -91,6 +93,7 @@ public class payDao {
 					String wallets = rs7.getString(4);
 					session.setAttribute("walletst",wallets);
 				}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -23,9 +23,9 @@ public class LoginDao {
 	 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=CURRENT_DATE)";
 	 
 
-	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+	String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 	String username = "root";
-	String password = "#ironmanROCKX64";
+	String password = "123456";
 	
 	private Connection con;	
 	

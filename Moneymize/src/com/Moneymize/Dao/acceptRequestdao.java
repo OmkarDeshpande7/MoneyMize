@@ -24,9 +24,9 @@ public class acceptRequestdao {
 	 String sql4 = "select * from pendingpersonalrequests where borrower=?";
 	 String sql7 = "select * from user where phone=?";
 
-		String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+		String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 		String username = "root";
-		String password = "#ironmanROCKX64";
+		String password = "123456";
 		int pid;
 		private Connection con;	
 		
