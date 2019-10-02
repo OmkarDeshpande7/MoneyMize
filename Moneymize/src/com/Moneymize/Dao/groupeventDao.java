@@ -37,7 +37,6 @@ public class groupeventDao {
 	ArrayList<pendingpersonalrequests> requestr=(ArrayList<pendingpersonalrequests>) session.getAttribute("requests");	
 	 try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-	   
 		    con = DriverManager.getConnection(url,username,password);
 			PreparedStatement st1 = con.prepareStatement(sql1);
 			st1.setString(1,description);

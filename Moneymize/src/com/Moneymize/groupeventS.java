@@ -25,7 +25,7 @@ public class groupeventS extends HttpServlet {
     	String date = (String) request.getParameter("date");
     	System.out.println(request.getParameter("totalamt"));
 		int totalamt = Integer.parseInt(request.getParameter("totalamt"));		
-    	String owner = (String) session.getAttribute("owner");
+    	String owner = (String) request.getParameter("owner");
 		groupeventDao daoP = new groupeventDao();
 		daoP.savegroupevent(description,date,totalamt,owner,request);
 		response.sendRedirect("dashboard.jsp");
