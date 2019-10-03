@@ -96,7 +96,7 @@
                 </ul>
               </li>
               <li>
-                 <a class="nav-link" href="${pageContext.request.contextPath}/index.html">Username</a>
+                 <a class="nav-link" href="${pageContext.request.contextPath}/index.html">${user_name}</a>
               </li>
               <li class="nav-item text-nowrap">
                 <a class="nav-link" href="${pageContext.request.contextPath}/index.html">Sign out</a>

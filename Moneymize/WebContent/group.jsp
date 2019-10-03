@@ -94,7 +94,7 @@ jsp<!DOCTYPE html>
                 </ul>
               </li>
               <li>
-                 <a class="nav-link" href="">Username</a>
+                 <a class="nav-link" href="">${user_name}</a>
               </li>
               <li class="nav-item text-nowrap">
                 <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Sign out</a>

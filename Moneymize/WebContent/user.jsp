@@ -29,8 +29,6 @@
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
-          </li>jsp
-          <li>
             <a href="wallet.jsp">
               <i class="tim-icons icon-money-coins"></i>
               <p>Wallet Balance</p>
@@ -94,7 +92,7 @@
                 </ul>
               </li>
               <li>
-                 <a class="nav-link" href="">Username</a>
+                 <a class="nav-link" href="">${user_name}</a>
               </li>
               <li class="nav-item text-nowrap">
                 <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Sign out</a>

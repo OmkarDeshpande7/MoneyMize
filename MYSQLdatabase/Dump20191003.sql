@@ -37,7 +37,7 @@ CREATE TABLE `dailycategory` (
 
 LOCK TABLES `dailycategory` WRITE;
 /*!40000 ALTER TABLE `dailycategory` DISABLE KEYS */;
-INSERT INTO `dailycategory` VALUES (3,'Lunch',270),(3,'Breakfast',100),(1,'Breakfast',100),(4,'Evening Breakfast',100),(1,'Breakfast',100),(1,'Breakfast',100),(1,'Breakfast',100),(1,'lunch',1000),(1,'lunch',1000),(1,'Dinner',200),(1,'Evening Breakfast',270),(3,'Lunch',300);
+INSERT INTO `dailycategory` VALUES (3,'Lunch',270),(3,'Breakfast',100),(1,'Breakfast',100),(4,'Evening Breakfast',100),(1,'Breakfast',100),(1,'Breakfast',100),(1,'Breakfast',100),(1,'lunch',1000),(1,'lunch',1000),(1,'Dinner',200),(1,'Evening Breakfast',270),(3,'Lunch',300),(1,'Lunch',300),(1,NULL,1000),(1,'Dinner',1000),(5,'Breakfast',20),(5,'Lunch',30),(5,'Dinner',1000),(6,'Breakfast',100),(6,'Lunch',270),(6,'Lunch',100),(6,'Evening Breakfast',50),(7,'Breakfast',100),(7,'Evening Breakfast',20);
 /*!40000 ALTER TABLE `dailycategory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -56,7 +56,7 @@ CREATE TABLE `dailyexpenses` (
   PRIMARY KEY (`expenseId`),
   KEY `user` (`user`),
   CONSTRAINT `dailyexpenses_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `dailyexpenses` (
 
 LOCK TABLES `dailyexpenses` WRITE;
 /*!40000 ALTER TABLE `dailyexpenses` DISABLE KEYS */;
-INSERT INTO `dailyexpenses` VALUES ('7721071250','2019-09-29',0,1),(NULL,'2019-09-29',0,2),('2525252525','2019-09-29',0,3),('1111111111','2019-09-29',0,4);
+INSERT INTO `dailyexpenses` VALUES ('7721071250','2019-09-29',0,1),(NULL,'2019-09-29',0,2),('2525252525','2019-09-29',0,3),('1111111111','2019-09-29',0,4),('7972663093','2019-09-30',0,5),('7721071250','2019-09-30',0,6),('7721071250','2019-10-03',0,7);
 /*!40000 ALTER TABLE `dailyexpenses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,6 @@ DROP TABLE IF EXISTS `notification`;
 CREATE TABLE `notification` (
   `time` datetime DEFAULT NULL,
   `descreption` varchar(100) DEFAULT NULL,
-  `status` tinyint(1) DEFAULT NULL,
   `user` varchar(11) DEFAULT NULL,
   KEY `user` (`user`),
   CONSTRAINT `notification_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`phone`)
@@ -121,6 +120,7 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
+INSERT INTO `notification` VALUES ('2019-10-03 20:01:29','shubham(7721071250) has requested that you had borrowed amount :500','2525252525'),('2019-10-03 20:01:54','omkar deshpande(2525252525) has accpted your request that you had lend amount :500toomkar deshpande','7721071250'),('2019-10-03 20:03:54','omkar deshpande(2525252525) has paid you amount :500','7721071250'),('2019-10-03 21:47:24','shubham(7721071250) has requested that you had borrowed amount :500','2525252525'),('2019-10-03 21:47:59','omkar deshpande(2525252525) has accpted your request that you had lend amount :500toomkar deshpande','7721071250'),('2019-10-03 21:48:40','omkar deshpande(2525252525) has paid you amount :500','7721071250');
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +141,7 @@ CREATE TABLE `pendingpersonalrequests` (
   KEY `borrower` (`borrower`),
   CONSTRAINT `pendingpersonalrequests_ibfk_1` FOREIGN KEY (`lender`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `pendingpersonalrequests_ibfk_2` FOREIGN KEY (`borrower`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -170,7 +170,7 @@ CREATE TABLE `personalevent` (
   KEY `borrower` (`borrower`),
   CONSTRAINT `personalevent_ibfk_1` FOREIGN KEY (`lender`) REFERENCES `user` (`phone`),
   CONSTRAINT `personalevent_ibfk_2` FOREIGN KEY (`borrower`) REFERENCES `user` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +238,7 @@ CREATE TABLE `personaleventlog` (
 
 LOCK TABLES `personaleventlog` WRITE;
 /*!40000 ALTER TABLE `personaleventlog` DISABLE KEYS */;
-INSERT INTO `personaleventlog` VALUES (100,'2525252525','7709833124',10),(123456,'7709833124','2525252525',11),(1000,'7721071250','2525252525',12),(500,'1111111111','2525252525',13),(1000,'1111111111','2525252525',15),(500,'7721071250','2525252525',14),(1000,'7721071250','2525252525',16),(3456,'1111111111','2525252525',17),(1000,'7721071250','2525252525',18);
+INSERT INTO `personaleventlog` VALUES (100,'2525252525','7709833124',10),(123456,'7709833124','2525252525',11),(1000,'7721071250','2525252525',12),(500,'1111111111','2525252525',13),(1000,'1111111111','2525252525',15),(500,'7721071250','2525252525',14),(1000,'7721071250','2525252525',16),(3456,'1111111111','2525252525',17),(1000,'7721071250','2525252525',18),(1000,'7721071250','2525252525',19),(300,'7972663093','7721071250',21),(340,'1111111111','2525252525',20),(2000,'7721071250','2525252525',22),(500,'7721071250','2525252525',23),(500,'7721071250','2525252525',24),(500,'7721071250','2525252525',25);
 /*!40000 ALTER TABLE `personaleventlog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,7 +265,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1111111111','sdfsd','omkar',1000,'pass'),('1234567890','shubhamdarak37@gmil.com','shubham',1000,'1234'),('2222222222','omkar@gmail.com','omkar',1000,'password'),('2525252525','deshpandeomkar77@gmail.com','omkar deshpande',930,'123456'),('7350766736','atharva.chavan29@gmail.com','atharva chvan',1000,'atharva123'),('7350766738','gaikwadsampada8@gmail.com','atharva',1000,'sam29'),('770983312','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7709833124','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7721065893','shubhamdarak37@gmil.com','atharva',1000,'at'),('7721071250','shubhamdarak37@gmil.com','shubham',430,'sd'),('7721088542','shubhamdarak37@gmil.com','omkar',1000,'omkar'),('7789456123','shubhamdarak37@gmil.com','shubham',1000,'sd'),('7972663093','dschandak@gmail.com','Devesh Chandak',1000,'devesh_111'),('9876543210','user@gmail.com','usera',1000,'9876543210');
+INSERT INTO `user` VALUES ('1111111111','sdfsd','omkar',1000,'pass'),('1234567890','shubhamdarak37@gmil.com','shubham',1000,'1234'),('2222222222','omkar@gmail.com','omkar',1000,'password'),('2525252525','deshpandeomkar77@gmail.com','omkar deshpande',930,'123456'),('7350766736','atharva.chavan29@gmail.com','atharva chvan',1000,'atharva123'),('7350766738','gaikwadsampada8@gmail.com','atharva',1000,'sam29'),('770983312','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7709833124','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7721065893','shubhamdarak37@gmil.com','atharva',1000,'at'),('7721071250','shubhamdarak37@gmil.com','shubham',10890,'sd'),('7721088542','shubhamdarak37@gmil.com','omkar',1000,'omkar'),('7789456123','shubhamdarak37@gmil.com','shubham',1000,'sd'),('7972663093','dschandak@gmail.com','Devesh Chandak',950,'devesh_111'),('9876543210','user@gmail.com','usera',1000,'9876543210');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,6 +329,25 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `adduseringroup` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `adduseringroup`(IN amt int,IN eid int,IN user char(11))
+BEGIN
+	INSERT INTO useringroup values(amt,eid,user);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `insertinpersonalevent` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -339,13 +358,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertinpersonalevent`(IN id int)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertinpersonalevent`(IN id int,IN message varchar(100))
 BEGIN
 	IF EXISTS (SELECT * FROM personalevent WHERE lender=(select lender from pendingpersonalrequests where pid=id) and borrower=(select borrower from pendingpersonalrequests where pid=id)) then
 		Update personalevent set amount=amount + (select amount from pendingpersonalrequests  WHERE lender=(select lender from pendingpersonalrequests where pid=id) and borrower=(select borrower from pendingpersonalrequests where pid=id)) WHERE lender=(select lender from pendingpersonalrequests where pid=id) and borrower=(select borrower from pendingpersonalrequests where pid=id);
 		ELSE
 		INSERT INTO personalevent (amount,lender,borrower) values ((select amount from pendingpersonalrequests where pid = id),(select lender from pendingpersonalrequests where pid = id),(select borrower from pendingpersonalrequests where pid = id));
 		end if;
+        insert into notification(time,descreption,user) values(NOW(),message,(select lender from pendingpersonalrequests where pid=id));
 		update user set wallet = wallet - (select amount from pendingpersonalrequests where pid = id) where phone=(select lender from pendingpersonalrequests where pid=id);
 		update user set wallet = wallet + (select amount from pendingpersonalrequests where pid = id) where phone=(select borrower from pendingpersonalrequests where pid=id);
 		delete from pendingpersonalrequests where pid=id;
@@ -415,7 +435,7 @@ BEGIN
 IF NOT EXISTS (select * from dailyexpenses where Date = CURRENT_DATE and user = phones) then
 	INSERT INTO dailyexpenses(user,Date,total_amount) values(phones,CURRENT_DATE,0);
 	end if;
-	INSERT INTO dailycategory(expenseId,category,amount) values((select expenseId from dailyexpenses where user=phones),category,amount);
+	INSERT INTO dailycategory(expenseId,category,amount) values((select expenseId from dailyexpenses where user=phones and Date = CURRENT_DATE),category,amount);
 	update user set wallet = wallet - amount where phone = phones;
 END ;;
 DELIMITER ;
@@ -433,9 +453,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `savegroupevent`(IN id int ,IN description varchar(100),IN edate date,IN totalamt int,IN owner char(11))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `savegroupevent`(IN description varchar(100),IN edate date,IN totalamt int,IN owner char(11))
 BEGIN
-	INSERT INTO groupevent values(id,description,edate,totalamt,owner);
+	INSERT INTO groupevent(description,date,totalAmt,owner) values(description,edate,totalamt,owner);
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -490,4 +510,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-29 18:16:54
+-- Dump completed on 2019-10-03 21:53:00

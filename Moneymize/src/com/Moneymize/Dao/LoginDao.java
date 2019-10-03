@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.Moneymize.info.dailyexpense;
 import com.Moneymize.info.groupevent;
+import com.Moneymize.info.notification;
 import com.Moneymize.info.pendingpersonalrequests;
 import com.Moneymize.info.personalevent;
 
@@ -19,13 +20,14 @@ public class LoginDao {
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	String sql3 = "select * from pendingpersonalrequests where borrower=?";
 	String sql4 = "select * from groupevent where owner=?";
+	String sql5 = "select * from notification where user=?";
 	 String sql7 = "select * from user where phone=?";
 	 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=CURRENT_DATE)";
 	 
 
 	String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 	String username = "root";
-	String password = "123456";
+	String password = "#ironmanROCKX64";
 	
 	private Connection con;	
 	
@@ -34,7 +36,8 @@ public class LoginDao {
 	List<personalevent> pevents = new ArrayList<personalevent>();
 	List<groupevent> gevents = new ArrayList<groupevent>();
 	List<dailyexpense> devents = new ArrayList<dailyexpense>();
-	
+	List<notification> nevents = new ArrayList<notification>();
+
 
 
 	public boolean check(String uname,String pass,HttpServletRequest request)
@@ -52,6 +55,8 @@ public class LoginDao {
 			ResultSet rs = st.executeQuery();
 			if(rs.absolute(1))
 			{
+				String user_name = rs.getString(3);
+				session.setAttribute("user_name",user_name);
 				PreparedStatement st1 = con.prepareStatement(sql2);
 				st1.setString(1, uname);
 				st1.setString(2, uname);
@@ -64,6 +69,10 @@ public class LoginDao {
 				PreparedStatement st3 = con.prepareStatement(sql4);
 				st3.setString(1, uname);
 				ResultSet rs3 = st3.executeQuery();
+				
+				PreparedStatement st5 = con.prepareStatement(sql5);
+				st5.setString(1, uname);
+				ResultSet rs5 = st5.executeQuery();
 				
 				PreparedStatement st8 = con.prepareStatement(sql8);
 				st8.setString(1, uname);
@@ -129,10 +138,22 @@ public class LoginDao {
 					session.setAttribute("devents",devents);
 				}
 				
+				while(rs5.next())
+				{
+					notification noificationevent = new notification();
+					noificationevent.setDate(rs5.getString(1));
+					noificationevent.setMessage(rs5.getString(2));
+					nevents.add(noificationevent);
+					session.setAttribute("nevents",nevents);
+				}
+				
+				
 				session.setAttribute("pevents",pevents);
 				session.setAttribute("requests",requests);
 				session.setAttribute("gevents",gevents);
 				session.setAttribute("devents",devents);
+				session.setAttribute("nevents",nevents);
+
 				return true;	
 			}
 			else
