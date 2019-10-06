@@ -8,9 +8,17 @@ END //
 
 
 DROP PROCEDURE IF EXISTS savegroupevent//
-CREATE PROCEDURE savegroupevent (IN description varchar(100),IN edate date,IN totalamt int,IN owner char(11)) 
+CREATE PROCEDURE savegroupevent (IN description varchar(100),IN edate date,IN totalamt int,IN eowner char(11)) 
 BEGIN
-	INSERT INTO groupevent(description,date,totalAmt,owner) values(description,edate,totalamt,owner);
+	INSERT INTO groupevent(description,date,totalAmt,owner) values(description,edate,totalamt,eowner);
+	update user set wallet = wallet - totalamt where phone=owner;
+	select *  from groupevent where description=description and date=edate and totalAmt=totalamt and owner=eowner;
+END //
+
+DROP PROCEDURE IF EXISTS insertuseringroup//
+CREATE PROCEDURE insertuseringroup (IN amount int,IN eid int,IN user CHAR(11))
+BEGIN
+	INSERT INTO useringroup values(amount,eid,user);
 END //
 
 

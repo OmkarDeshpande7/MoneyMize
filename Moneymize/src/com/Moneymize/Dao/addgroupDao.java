@@ -14,12 +14,14 @@ import com.Moneymize.info.notification;
 import com.Moneymize.info.pendingpersonalrequests;
 import com.Moneymize.info.personalevent;
 
-public class acceptRequestdao {
+public class addgroupDao {
 	
-	String sql1 = "call insertinpersonalevent(?,?)";
+	String sql1 = "call insertuseringroup(?,?,?)";
+	String sql3 = "call savegroupevent(?,NOW(),?,?)";
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	String sql4 = "select * from pendingpersonalrequests where borrower=?";
 	String sql5 = "select * from pendingpersonalrequests where pid = ?";
+	String sql6 = "	select *  from groupevent where owner = ? and totalAmt =? and description=?";
 	String sql7 = "select * from user where phone=?";
 	String sql15 = "select * from notification where user=?";
 
@@ -29,37 +31,21 @@ public class acceptRequestdao {
 		int pid;
 		private Connection con;	
 		
-   public void accept(int pid,HttpServletRequest request) 
+   public void addGroup(String description,int totalamt,String owner,HttpServletRequest request) 
    {
 	   HttpSession session = request.getSession();
 		ArrayList<notification> nevents=(ArrayList<notification>) session.getAttribute("nevents");  
-
-	   pid = Integer.parseInt(request.getParameter("reqId"));
+		String outerArray=request.getParameter("list");
+		String[] innerArray=outerArray.split(",");
+		String uname = (String)session.getAttribute("phone");
+	   //pid = Integer.parseInt(request.getParameter("reqId"));
 	   ArrayList<personalevent> peventstr=(ArrayList<personalevent>) session.getAttribute("pevents");
-	ArrayList<pendingpersonalrequests> requestr=(ArrayList<pendingpersonalrequests>) session.getAttribute("requests");	
+	   ArrayList<pendingpersonalrequests> requestr=(ArrayList<pendingpersonalrequests>) session.getAttribute("requests");	
 	 try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 	   
 		    con = DriverManager.getConnection(url,username,password);
 		    
-		    PreparedStatement st5 = con.prepareStatement(sql5);
-			st5.setInt(1, pid);
-			ResultSet rs5 = st5.executeQuery();
-			rs5.next();
-		    int amount = Integer.parseInt(rs5.getString(1));
-			PreparedStatement st1 = con.prepareStatement(sql1);
-			String phone = (String) session.getAttribute("123456");
-			String user_name = (String) session.getAttribute("user_name");
-			String message = user_name + "(" + phone + ") has accpted your request that you had lend amount :" + amount + "to" + user_name; 
-			st1.setInt(1,pid);
-			st1.setString(2,message);
-			st1.executeUpdate();
-			String uname = (String) session.getAttribute("phone");
-			
-			peventstr.clear();
-			requestr.removeAll(requestr);
-			nevents.clear();
-			
 			PreparedStatement st15 = con.prepareStatement(sql15);
 			st15.setString(1, uname);
 			ResultSet rs15 = st15.executeQuery();
@@ -115,6 +101,27 @@ public class acceptRequestdao {
 				{
 					String wallets = rs7.getString(4);
 					session.setAttribute("walletst",wallets);
+				}
+				session.setAttribute("nevents",nevents);
+				
+				PreparedStatement st8 = con.prepareStatement(sql3);
+				st8.setString(1, description);
+				st8.setInt(2, totalamt);
+				st8.setString(3, owner);
+				ResultSet rs8 = st8.executeQuery();
+				System.out.println("group added");
+				if(rs8.last())
+				{
+					System.out.println(rs8.getInt(1));
+					PreparedStatement st9 = con.prepareStatement(sql1);
+
+					for(int i=0;i<innerArray.length;i++){
+					st9.setInt(1, totalamt/(innerArray.length + 1));
+					st9.setInt(2, rs8.getInt(1));
+					st9.setString(3, innerArray[i]);
+					ResultSet rs9 = st9.executeQuery();
+					System.out.println("user added");
+					}
 				}
 				session.setAttribute("nevents",nevents);
 

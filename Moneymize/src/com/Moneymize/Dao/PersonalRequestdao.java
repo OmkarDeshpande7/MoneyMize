@@ -22,7 +22,7 @@ public class PersonalRequestdao
 		String sql15 = "select * from notification where user=?";
 
 
-	String password = "#ironmanROCKX64";
+	String password = "123456";
 	private Connection con;	
 	
 	

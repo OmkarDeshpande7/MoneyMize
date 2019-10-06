@@ -1,4 +1,6 @@
-jsp<!DOCTYPE html>
+<!DOCTYPE html>
+<%@page import="com.Moneymize.info.personalevent"%>
+<%@page import="java.util.ArrayList"%>
 <html lang="en">
 
 <head>
@@ -121,8 +123,57 @@ jsp<!DOCTYPE html>
         <div class="col-md-12">
           <h5><b>Group events</b></h5>
           <hr>
+          
         </div>
-        <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <div class="card col-md-10">
+          <div class="card-body">
+            <div class="row">
+               <h5 style="margin-top: 10px">Add a group event</h5>
+            </div>
+            <form action="addgroupS">
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" id="list" name="list" placeholder="list" hidden>
+                  <input type="text" class="form-control" id="user" name="user" placeholder="user">
+                  <input type="number" style="margin-top:10px" class="form-control" id="totalamt" name="totalamt" placeholder="Total Amount">
+                  <input type="text" style="margin-top:10px" class="form-control" id="description" name="description" placeholder="Description">
+	
+                </div>
+                <div class="col">
+                  <button class="btn btn-success btn-round btn-sm animation-on-hover" id="addbtn" onclick="addArray()" type="button">Add</button>
+                  <button class="btn btn-success btn-round btn-sm animation-on-hover" onclick="submitRequest()" style="margin-left:30%" type="submit">Submit</button>
+
+                </div>
+              </div>
+            </form>
+            <div class="card card-tasks" style="max-height:220px;margin-top:10%;border : 1px solid white ">
+              <div class="card-header ">
+                <h6 class="title d-inline">Participants in group</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+
+				<script language="javascript" type="text/javascript">
+				/*document.getElementById("addbtn").onclick = function(){	
+					alert("hi");
+					var users = document.getElementById("list").value;
+					for (var a=0; a < users.size(); a++) {
+						document.write("<p>");
+						document.write(users[a] + "jhgjhg");
+						document.write("</p><br>");
+					}
+					}*/
+				</script>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            
+          </div>
+        </div>
         
       </div>
      
@@ -287,6 +338,25 @@ jsp<!DOCTYPE html>
       demo.initDashboardPageCharts();
 
     });
+  </script>
+  <script>
+    function addArray(){
+    	if( typeof addArray.users == 'undefined' ) {
+    		addArray.users =[];
+        }
+    	addArray.users.push(document.getElementById("user").value);
+    	document.getElementById("user").value = "";
+    	document.getElementById("list").value = addArray.users;
+    	console.log(addArray.users);
+    	return addArray.users;
+    	good();
+    }
+    
+    function submitRequest(){
+    	 $.post("addgroupS",{array:addArray.users}, function(data, status){
+    		    alert("Data: " + data + "\nStatus: " + status);
+    		  });
+    }
   </script>
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
