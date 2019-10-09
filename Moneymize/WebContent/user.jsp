@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@page import="com.Moneymize.info.groupevent"%>
+<%@page import="com.Moneymize.info.pendingpersonalrequests"%>
+<%@page import="com.Moneymize.info.personalevent"%>
+<%@page import="com.Moneymize.info.dailyexpense"%>
+<%@page import="com.Moneymize.info.notification"%>
+
+
+<%@page import="java.util.ArrayList"%>
 
 <head>
   <meta charset="utf-8" />
@@ -21,7 +29,7 @@
 
 <body class="">
   <div class="wrapper">
-    <div class="sidebar" style="height: 400px">
+    <div class="sidebar" style="height: 440px">
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
@@ -29,6 +37,8 @@
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Dashboard</p>
             </a>
+          </li>
+          <li>  
             <a href="wallet.jsp">
               <i class="tim-icons icon-money-coins"></i>
               <p>Wallet Balance</p>
@@ -58,6 +68,12 @@
               <p>User Profile</p>
             </a>
           </li>
+          <li>
+            <a href="analysis.jsp">
+              <i class="tim-icons icon-chart-bar-32"></i>
+              <p>Analysis</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -83,12 +99,15 @@
                     Notifications
                   </p>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
+                <ul class="dropdown-menu dropdown-menu-right dropdown-black dropdown-navbar" style="width: 450px">
+                  <%   ArrayList<notification> nevents=(ArrayList<notification>) session.getAttribute("nevents");  
+                        if (nevents!=null){
+                      for (int i=nevents.size()-1;i>=0;i--) {   
+                      %>
+                      <hr>
+                  <li><p class="text" style="font-size: 12px"><%= nevents.get(i).getMessage() + " : " + nevents.get(i).getDate() %></p></li>
+                   <%}}%> 
+                   <hr>
                 </ul>
               </li>
               <li>

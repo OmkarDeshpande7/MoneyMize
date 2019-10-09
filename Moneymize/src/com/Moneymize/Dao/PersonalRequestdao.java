@@ -22,7 +22,7 @@ public class PersonalRequestdao
 		String sql15 = "select * from notification where user=?";
 
 
-	String password = "123456";
+	String password = "#ironmanROCKX64";
 	private Connection con;	
 	
 	
@@ -36,13 +36,14 @@ public class PersonalRequestdao
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 	    con = DriverManager.getConnection(url,username,password);
 	    System.out.println("connecting...db");
+	    if(Integer.parseInt((String)session.getAttribute("walletst"))>Integer.parseInt(amount)){
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1,amount);
 		st.setString(2,lender);
 		st.setString(3,borrower);
 		System.out.println("connecting...");
 		int rs = st.executeUpdate();
-		
+	    }
 		String uname = (String) session.getAttribute("phone");
 		String phone = borrower; 
 		String user_name = (String) session.getAttribute("user_name");

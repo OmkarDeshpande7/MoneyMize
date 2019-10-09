@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-<%@page import="com.Moneymize.info.personalevent"%>
-<%@page import="java.util.ArrayList"%>
 <html lang="en">
+<%@page import="com.Moneymize.info.groupevent"%>
+<%@page import="com.Moneymize.info.pendingpersonalrequests"%>
+<%@page import="com.Moneymize.info.personalevent"%>
+<%@page import="com.Moneymize.info.dailyexpense"%>
+<%@page import="com.Moneymize.info.notification"%>
+
+
+<%@page import="java.util.ArrayList"%>
 
 <head>
   <meta charset="utf-8" />
@@ -23,7 +29,7 @@
 
 <body class="">
   <div class="wrapper">
-    <div class="sidebar" style="height: 400px">
+    <div class="sidebar" style="height: 440px">
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
@@ -62,6 +68,12 @@
               <p>User Profile</p>
             </a>
           </li>
+          <li>
+            <a href="analysis.jsp">
+              <i class="tim-icons icon-chart-bar-32"></i>
+              <p>Analysis</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -87,12 +99,15 @@
                     Notifications
                   </p>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
-                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
-                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
+                <ul class="dropdown-menu dropdown-menu-right dropdown-black dropdown-navbar" style="width: 450px">
+                  <%   ArrayList<notification> nevents=(ArrayList<notification>) session.getAttribute("nevents");  
+                        if (nevents!=null){
+                      for (int i=nevents.size()-1;i>=0;i--) {   
+                      %>
+                      <hr>
+                  <li><p class="text" style="font-size: 12px"><%= nevents.get(i).getMessage() + " : " + nevents.get(i).getDate() %></p></li>
+                   <%}}%> 
+                   <hr>
                 </ul>
               </li>
               <li>
@@ -127,6 +142,8 @@
         </div>
         <div class="card col-md-10">
           <div class="card-body">
+          <div class="row">
+          <div class="col-md-6">
             <div class="row">
                <h5 style="margin-top: 10px">Add a group event</h5>
             </div>
@@ -134,45 +151,41 @@
               <div class="row">
                 <div class="col">
                   <input type="text" class="form-control" id="list" name="list" placeholder="list" hidden>
-                  <input type="text" class="form-control" id="user" name="user" placeholder="user">
-                  <input type="number" style="margin-top:10px" class="form-control" id="totalamt" name="totalamt" placeholder="Total Amount">
-                  <input type="text" style="margin-top:10px" class="form-control" id="description" name="description" placeholder="Description">
-	
+                  <input type="text" class="form-control" id="user" name="user" placeholder="user"> 
                 </div>
                 <div class="col">
-                  <button class="btn btn-success btn-round btn-sm animation-on-hover" id="addbtn" onclick="addArray()" type="button">Add</button>
-                  <button class="btn btn-success btn-round btn-sm animation-on-hover" onclick="submitRequest()" style="margin-left:30%" type="submit">Submit</button>
-
+                <button class="btn btn-success btn-round btn-sm animation-on-hover" id="addbtn" onclick="check()" type="button">Add</button>
                 </div>
+              </div>
+              
+              <div class="row">  
+                <div class="col-md-6">
+                  <input type="number" style="margin-top:10px" class="form-control" id="totalamt" name="totalamt" placeholder="Total Amount">
+                  <input type="text" style="margin-top:10px" class="form-control" id="description" name="description" placeholder="Description">
+                </div>
+              </div>
+              <div class="row">
+              <button class="btn btn-success btn-round btn-sm animation-on-hover" onclick="submitRequest()" style="margin-left:30%;margin-top:20px" type="submit">Submit</button>
               </div>
             </form>
-            <div class="card card-tasks" style="max-height:220px;margin-top:10%;border : 1px solid white ">
-              <div class="card-header ">
-                <h6 class="title d-inline">Participants in group</h6>
-              </div>
-              <div class="card-body " >
-                <div class="table-full-width table-responsive" style="max-height:160px ">
-                  <table class="table">
-                    <tbody>
-
-				<script language="javascript" type="text/javascript">
-				/*document.getElementById("addbtn").onclick = function(){	
-					alert("hi");
-					var users = document.getElementById("list").value;
-					for (var a=0; a < users.size(); a++) {
-						document.write("<p>");
-						document.write(users[a] + "jhgjhg");
-						document.write("</p><br>");
-					}
-					}*/
-				</script>
-                      
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            
-          </div>
+            </div>
+            <div class="col-md-6">
+            <div class="row" style="margin-top:20px ">
+              <div class="card col-md-10" style="border:2px solid white">
+          		<div class="card-body">
+	    			<table id="tasksTable" class="table" style="color:white">
+				      <thead>
+				        <tr>
+				          <th style="width: 250px;">Members:</th>
+				        </tr>
+					  </thead>
+	      			  <tbody></tbody>
+	    			</table>
+	    		</div>	
+  			  </div>
+            </div>
+           </div>
+           </div> 
         </div>
         
       </div>
@@ -340,16 +353,47 @@
     });
   </script>
   <script>
+  
+  function check()
+  {
+
+
+	  $.ajax({
+          url : "checkUser",
+          type : "POST",
+          dataType : "text",
+          data:{checkval:document.getElementById("user").value},
+          success : function(data) {
+                  	var temp = JSON.parse(data);
+					if(temp.value)
+						addArray();
+}
+          
+  });
+  }
+  
+  
+  
     function addArray(){
+    	var memb = [];
+    	var rowCount = 1;
+	    var table = document.getElementById("tasksTable");
+    	if(!document.getElementById("user").value == "" ){
+    	  memb.push(document.getElementById("user").value);
+    	  var row = table.insertRow(rowCount);
+    	  var cell1 = row.insertCell(0);
+    	  cell1.innerHTML = memb[rowCount - 1];
+    	  rowCount++;
+    	
     	if( typeof addArray.users == 'undefined' ) {
     		addArray.users =[];
         }
-    	addArray.users.push(document.getElementById("user").value);
+	    	addArray.users.push(document.getElementById("user").value);
     	document.getElementById("user").value = "";
     	document.getElementById("list").value = addArray.users;
     	console.log(addArray.users);
     	return addArray.users;
-    	good();
+    	}
     }
     
     function submitRequest(){

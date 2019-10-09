@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
   <title>
-    Personal events
+    Analysis
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -56,7 +56,7 @@
               <p>Group events</p>
             </a>
           </li>
-          <li class="active">
+          <li>
             <a href="personal.jsp">
               <i class="tim-icons icon-align-center"></i>
               <p>Personal events</p>
@@ -68,7 +68,7 @@
               <p>User Profile</p>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="analysis.jsp">
               <i class="tim-icons icon-chart-bar-32"></i>
               <p>Analysis</p>
@@ -136,28 +136,68 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="col-md-12">
-          <h5><b>Personal events</b></h5>
+          <h5><b>Analysis</b></h5>
           <hr>
         </div>
 
-        <div class="card col-md-10">
-          <div class="card-body">
-            <div class="row">
-               <h5 style="margin-top: 10px">Add a personal event:</h5>
-            </div>
-            <form action="personaleventS">
-              <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control" name="borrower" placeholder="Borrower">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" name="amount" placeholder="Amount">
-                </div>
-                <div class="col">
-                  <button class="btn btn-success btn-round btn-sm animation-on-hover" type="submit">Add</button>
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-chart">
+              <div class="card-header ">
+                <div class="row">
+                  <div class="col-sm-6 text-left">
+                    <h5 class="card-category">Six month analysis</h5>
+                    <h2 class="card-title">Expenses</h2>
+                  </div>
                 </div>
               </div>
-            </form>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="chartBig1"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Past 6 days</h5>
+                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i>Amount</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="chartLinePurple"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Past 6 weeks</h5>
+                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> Amount</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="CountryChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card card-chart">
+              <div class="card-header">
+                <h5 class="card-category">Completed Tasks</h5>
+                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> 12,100K</h3>
+              </div>
+              <div class="card-body">
+                <div class="chart-area">
+                  <canvas id="chartLineGreen"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         
@@ -206,7 +246,7 @@
   <script src="${pageContext.request.contextPath}/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="${pageContext.request.contextPath}/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-  <script src="${pageContext.request.contextPath}/assets/demo/demo.js"></script>
+  <script src="${pageContext.request.contextPath}/assets/demo/demo.js?v=3"></script>
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -333,16 +373,6 @@
         application: "black-dashboard-free"
       });
   </script>
-
-  <%
-response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
-response.setHeader("Pragma", "no-cache");//1.0
-response.setHeader("Expires", "0");//proxies
-
-if(session.getAttribute("phone")==null)
-  response.sendRedirect("index.jsp");
-
-%>
 </body>
 
 </html>

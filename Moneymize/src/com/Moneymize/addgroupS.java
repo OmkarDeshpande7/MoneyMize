@@ -29,7 +29,7 @@ public class addgroupS extends HttpServlet {
     	String owner = (String) session.getAttribute("phone");
 		addgroupDao daoP = new addgroupDao();
 		daoP.addGroup(description,totalamt,owner,request);
-		response.sendRedirect("dashboard.jsp");
+		response.sendRedirect("group.jsp");
 		
 	}
 

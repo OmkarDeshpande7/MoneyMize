@@ -23,11 +23,11 @@ public class addgroupDao {
 	String sql5 = "select * from pendingpersonalrequests where pid = ?";
 	String sql6 = "	select *  from groupevent where owner = ? and totalAmt =? and description=?";
 	String sql7 = "select * from user where phone=?";
-	String sql15 = "select * from notification where user=?";
+	String sql15 = "select * from notification where user=? limit 12";
 
 		String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 		String username = "root";
-		String password = "123456";
+		String password = "#ironmanROCKX64";
 		int pid;
 		private Connection con;	
 		

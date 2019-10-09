@@ -16,7 +16,7 @@ public class Walletdao
 
 	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 	String username = "root";
-	String password = "123456";
+	String password = "#ironmanROCKX64";
 	private Connection con;	
 	public boolean add(String phone,int wallet,HttpServletRequest request)
 	{

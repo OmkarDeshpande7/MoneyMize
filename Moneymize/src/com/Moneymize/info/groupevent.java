@@ -3,10 +3,24 @@ package com.Moneymize.info;
 import java.sql.Date;
 
 public class groupevent {
+	int eid;
+	public int getEid() {
+		return eid;
+	}
+	public void setEid(int eid) {
+		this.eid = eid;
+	}
 	String description;
 	Date date;
 	int totalAmt;
 	String owner;
+	int pid;
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
 	public String getDescription() {
 		return description;
 	}

@@ -39,6 +39,7 @@ public class Login extends HttpServlet {
 		if(dao.check(phone, pass,request))
 		{
 			session.setAttribute("phone", phone);
+			session.setAttribute("errorMessage", "NOO");
 			response.sendRedirect("dashboard.jsp");
 		}
 		else

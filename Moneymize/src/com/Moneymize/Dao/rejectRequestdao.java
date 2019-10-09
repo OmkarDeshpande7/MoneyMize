@@ -27,7 +27,7 @@ public class rejectRequestdao {
 
 		String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
 		String username = "root";
-		String password = "123456";
+		String password = "#ironmanROCKX64";
 		int pid;
 		private Connection con;	
 		

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.Moneymize.Dao.LoginDao"%>
 <%@page import="com.Moneymize.info.groupevent"%>
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
@@ -35,7 +36,7 @@
 
 <body class="" >
   <div class="wrapper">
-    <div class="sidebar" style="height: 400px">
+    <div class="sidebar" style="height: 440px">
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active">
@@ -74,6 +75,12 @@
               <p>User Profile</p>
             </a>
           </li>
+          <li ">
+            <a href="analysis.jsp">
+              <i class="tim-icons icon-chart-bar-32"></i>
+              <p>Analysis</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -100,13 +107,15 @@
                     Notifications
                   </p>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+                <ul class="dropdown-menu dropdown-menu-right dropdown-black dropdown-navbar" style="width: 450px">
                   <%   ArrayList<notification> nevents=(ArrayList<notification>) session.getAttribute("nevents");  
                         if (nevents!=null){
                       for (int i=nevents.size()-1;i>=0;i--) {   
                       %>
-                  <li><p class="text" style="color : black"><%= nevents.get(i).getMessage() + " : " + nevents.get(i).getDate() %></p></li>
+                      <hr>
+                  <li><p class="text" style="font-size: 12px"><%= nevents.get(i).getMessage() + " : " + nevents.get(i).getDate() %></p></li>
                    <%}}%> 
+                   <hr>
                 </ul>
               </li>
               <li>
@@ -249,36 +258,24 @@
                 <div class="table-full-width table-responsive" style="max-height:160px ">
                   <table class="table">
                     <tbody>
+                     <%   ArrayList<groupevent> gevents=(ArrayList<groupevent>) session.getAttribute("gevents");  
+                              if (gevents!=null){
+                                       for (int i=0;i<gevents.size();i++) {   
+                      %>
                       <tr>
                         <td>
-                          <p class="text-muted">Update the Documentation</p>
+                          <p class="text"><%= gevents.get(i).getTotalAmt() + " -> " + gevents.get(i).getOwner() +" : "+ gevents.get(i).getDescription() %></p>
+                                               </td>
+                                               <td class="td-actions text-right">
+                                                                       <form action="" method="post">
+                                               
+                                  <input type="number" value="<%=gevents.get(i).getPid()%>" name="eid" hidden>
+                                               
+                      <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="paygroupmoney" >Pay</button>
+                      </form>
                         </td>
                       </tr>
-                      <tr>
-                        <td>
-                          <p class="text-muted">Update the Documentation</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="text-muted">Update the Documentation</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="text-muted">Update the Documentation</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="text-muted">Update the Documentation</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="text-muted">Update the Documentation</p>
-                        </td>
-                      </tr>
+                     <%}}%> 
                     </tbody>
                   </table>
                 </div>
@@ -346,7 +343,17 @@ if(session.getAttribute("phone")==null)
 %>
 
   <script>
+
+  
     $(document).ready(function() {
+    	<%-- <%
+    	if(!session.getAttribute("errorMessage").equals("NOO"))
+    	{
+    	LoginDao obj = new LoginDao(); 
+    	obj.checkpendingrequest((String)session.getAttribute("phone"), request);
+    	obj.checkPersonalevent((String)session.getAttribute("phone"), request);
+    	obj.groupevent((String)session.getAttribute("phone"), request);
+    	}%> --%>
       $().ready(function() {
         $sidebar = $('.sidebar');
         $navbar = $('.navbar');

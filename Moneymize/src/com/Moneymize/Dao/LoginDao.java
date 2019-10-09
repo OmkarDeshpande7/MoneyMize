@@ -19,7 +19,7 @@ public class LoginDao {
 	String sql1 = "select * from user where phone=? and password=?";
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	String sql3 = "select * from pendingpersonalrequests where borrower=?";
-	String sql4 = "select * from groupevent where owner=?";
+	String sql4 = "select * from useringroup,groupevent where user=? and useringroup.eventId = groupevent.eventId";
 	String sql5 = "select * from notification where user=?";
 	 String sql7 = "select * from user where phone=?";
 	 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=CURRENT_DATE)";
@@ -27,7 +27,7 @@ public class LoginDao {
 
 	String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 	String username = "root";
-	String password = "123456";
+	String password = "#ironmanROCKX64";
 	
 	private Connection con;	
 	
@@ -118,13 +118,13 @@ public class LoginDao {
 				
 				while(rs3.next())
 				{
-					
-	
-					groupevent newevent = new groupevent();
-					newevent.setTotalAmt((Integer.parseInt(rs3.getString(4))));
-					newevent.setOwner(rs3.getString(5));
-					newevent.setDescription(rs3.getString(2));
-					gevents.add(newevent);
+					groupevent newgevent = new groupevent();
+					newgevent.setTotalAmt((Integer.parseInt(rs3.getString(1))));
+					newgevent.setOwner(rs3.getString(9));
+					newgevent.setDescription(rs3.getString(6));
+					newgevent.setEid(rs3.getInt(2));
+					newgevent.setPid(rs3.getInt(4));
+					gevents.add(newgevent);
 					session.setAttribute("gevents",gevents);
 	
 				}

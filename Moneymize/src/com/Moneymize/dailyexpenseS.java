@@ -38,12 +38,12 @@ public class dailyexpenseS extends HttpServlet {
 	    if(date != null)
 	    {
 	    	daod.showdatewise(date,request);
-	    	response.sendRedirect("dashboard.jsp");
+	    	response.sendRedirect("daily.jsp");
 	    }
 	    else
 	    {
 	    	daod.insertDaily(category, categoryamount, phone, request);
-	    	response.sendRedirect("dashboard.jsp");
+	    	response.sendRedirect("daily.jsp");
 	    }
 	}
 

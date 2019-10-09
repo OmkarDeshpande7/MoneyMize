@@ -20,7 +20,7 @@ public class groupeventDao {
 
 		String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 		String username = "root";
-		String password = "123456";
+		String password = "#ironmanROCKX64";
 		int pid;
 		private Connection con;	
 		

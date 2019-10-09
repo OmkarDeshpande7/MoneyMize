@@ -30,7 +30,7 @@ public class payDao {
 
 		String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 		String username = "root";
-		String password = "123456";
+		String password = "#ironmanROCKX64";
 		int pid;
 		private Connection con;	
 		
@@ -63,9 +63,11 @@ public class payDao {
 			System.out.println("connecting...");
 			int rs12 = st12.executeUpdate();
 			
+		    if(Integer.parseInt((String)session.getAttribute("walletst"))>amount){
 			PreparedStatement st1 = con.prepareStatement(sql1);
 			st1.setInt(1,eid);
 			st1.executeUpdate();
+		    }
 			
 			peventstr.clear();
 			requestr.removeAll(requestr);
