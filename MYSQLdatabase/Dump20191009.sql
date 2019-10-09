@@ -37,6 +37,7 @@ CREATE TABLE `alllog` (
 
 LOCK TABLES `alllog` WRITE;
 /*!40000 ALTER TABLE `alllog` DISABLE KEYS */;
+INSERT INTO `alllog` VALUES (200,'You Borrowed money from omkar deshpande','7721071250'),(200,'You lent money to shubham','2525252525'),(200,'You paid pending amount to omkar deshpande','7721071250'),(200,'omkar deshpande paid your pending amount','2525252525'),(1200,'You created group event tea party','7721071250'),(500,'You Borrowed money from chirag','7721071250'),(500,'You lent money to shubham','9422738098'),(500,'You paid pending amount to chirag','7721071250'),(500,'chirag paid your pending amount','9422738098');
 /*!40000 ALTER TABLE `alllog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -68,9 +69,9 @@ UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -99,7 +100,7 @@ CREATE TABLE `dailyexpenses` (
   PRIMARY KEY (`expenseId`),
   KEY `user` (`user`),
   CONSTRAINT `dailyexpenses_ibfk_1` FOREIGN KEY (`user`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +109,7 @@ CREATE TABLE `dailyexpenses` (
 
 LOCK TABLES `dailyexpenses` WRITE;
 /*!40000 ALTER TABLE `dailyexpenses` DISABLE KEYS */;
-INSERT INTO `dailyexpenses` VALUES ('7721071250','2019-09-29',0,1),(NULL,'2019-09-29',0,2),('2525252525','2019-09-29',0,3),('1111111111','2019-09-29',0,4),('7972663093','2019-09-30',0,5),('7721071250','2019-09-30',0,6),('7721071250','2019-10-03',0,7),('2525252525','2019-10-09',0,8),('7709833124','2019-10-09',0,9),('7721071250','2019-10-09',0,10);
+INSERT INTO `dailyexpenses` VALUES ('7721071250','2019-09-29',0,1),(NULL,'2019-09-29',0,2),('2525252525','2019-09-29',0,3),('1111111111','2019-09-29',0,4),('7972663093','2019-09-30',0,5),('7721071250','2019-09-30',0,6),('7721071250','2019-10-03',0,7),('2525252525','2019-10-09',0,8),('7709833124','2019-10-09',0,9),('7721071250','2019-10-09',0,10),('9422738098','2019-10-09',0,11);
 /*!40000 ALTER TABLE `dailyexpenses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +155,7 @@ CREATE TABLE `groupevent` (
   PRIMARY KEY (`eventId`),
   KEY `owner` (`owner`),
   CONSTRAINT `groupevent_ibfk_1` FOREIGN KEY (`owner`) REFERENCES `user` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,15 +164,15 @@ CREATE TABLE `groupevent` (
 
 LOCK TABLES `groupevent` WRITE;
 /*!40000 ALTER TABLE `groupevent` DISABLE KEYS */;
-INSERT INTO `groupevent` VALUES (1,'1500','2019-10-07',1500,'7709833124'),(2,'chai party','2019-10-09',150,'2525252525'),(3,'project related something','2019-10-09',400,'2525252525'),(4,'kuch nahi bas yuhi','2019-10-09',40,'1111111111'),(5,'tea party','2019-10-09',-987654,'7709833124');
+INSERT INTO `groupevent` VALUES (1,'1500','2019-10-07',1500,'7709833124'),(2,'chai party','2019-10-09',150,'2525252525'),(3,'project related something','2019-10-09',400,'2525252525'),(4,'kuch nahi bas yuhi','2019-10-09',40,'1111111111'),(5,'tea party','2019-10-09',-987654,'7709833124'),(6,'tea party','2019-10-09',1200,'7721071250');
 /*!40000 ALTER TABLE `groupevent` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -207,7 +208,7 @@ CREATE TABLE `notification` (
 
 LOCK TABLES `notification` WRITE;
 /*!40000 ALTER TABLE `notification` DISABLE KEYS */;
-INSERT INTO `notification` VALUES ('2019-10-03 20:01:29','shubham(7721071250) has requested that you had borrowed amount :500','2525252525'),('2019-10-03 20:01:54','omkar deshpande(2525252525) has accpted your request that you had lend amount :500toomkar deshpande','7721071250'),('2019-10-03 20:03:54','omkar deshpande(2525252525) has paid you amount :500','7721071250'),('2019-10-03 21:47:24','shubham(7721071250) has requested that you had borrowed amount :500','2525252525'),('2019-10-03 21:47:59','omkar deshpande(2525252525) has accpted your request that you had lend amount :500toomkar deshpande','7721071250'),('2019-10-03 21:48:40','omkar deshpande(2525252525) has paid you amount :500','7721071250'),('2019-10-09 09:10:04','omkar deshpande(2525252525) has requested that you had borrowed amount :100','7709833124'),('2019-10-09 09:10:14','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7709833124'),('2019-10-09 09:10:30','omkar deshpande(2525252525) has requested that you had borrowed amount :123','7709833124'),('2019-10-09 09:11:21','omkar deshpande(null) has accpted your request that you had lend amount :123toomkar deshpande','2525252525'),('2019-10-09 09:39:33','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7721071250'),('2019-10-09 09:45:16','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7709833124'),('2019-10-09 09:45:48','omkar deshpande(7709833124) has rejected your request that you had lend amount :200toomkar deshpande','2525252525'),('2019-10-09 09:45:59','omkar deshpande(7709833124) has rejected your request that you had lend amount :200toomkar deshpande','2525252525'),('2019-10-09 09:46:15','omkar deshpande(7709833124) has rejected your request that you had lend amount :100toomkar deshpande','2525252525'),('2019-10-09 09:46:24','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7709833124'),('2019-10-09 09:58:41','omkar(1111111111) has requested that you had borrowed amount :10','7709833124'),('2019-10-09 10:00:26','omkar(1111111111) has requested that you had borrowed amount :100','7709833124'),('2019-10-09 10:04:25','omkar(1111111111) has requested that you had borrowed amount :11','7709833124'),('2019-10-09 10:10:10','omkar deshpande(7709833124) has rejected your request that you had lend amount :200toomkar deshpande','2525252525'),('2019-10-09 10:10:10','omkar deshpande(7709833124) has rejected your request that you had lend amount :10toomkar deshpande','1111111111'),('2019-10-09 10:10:11','omkar deshpande(7709833124) has rejected your request that you had lend amount :100toomkar deshpande','1111111111'),('2019-10-09 10:10:11','omkar deshpande(7709833124) has rejected your request that you had lend amount :11toomkar deshpande','1111111111'),('2019-10-09 10:10:26','omkar(1111111111) has requested that you had borrowed amount :100','7709833124'),('2019-10-09 10:11:13','omkar deshpande(null) has accpted your request that you had lend amount :100toomkar deshpande','1111111111'),('2019-10-09 10:13:53','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:13:55','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:13:58','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:14:02','omkar deshpande(7709833124) has paid you amount :123','2525252525'),('2019-10-09 10:14:14','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:27:58','omkar deshpande(7709833124) has paid you amount :123','2525252525'),('2019-10-09 11:18:16','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 11:18:25','omkar deshpande(7709833124) has paid you amount :123','2525252525'),('2019-10-09 11:58:42','omkar(1111111111) has requested that you had borrowed amount :111','7709833124'),('2019-10-09 11:59:54','omkar deshpande(null) has accpted your request that you had lend amount :111toomkar deshpande','1111111111'),('2019-10-09 12:00:02','omkar deshpande(7709833124) has paid you amount :111','1111111111'),('2019-10-09 12:00:43','omkar deshpande(7709833124) has paid you amount :111','1111111111'),('2019-10-09 12:01:00','omkar deshpande(7709833124) has requested that you had borrowed amount :111','2525252525'),('2019-10-09 12:01:15','omkar deshpande(null) has accpted your request that you had lend amount :111toomkar deshpande','7709833124'),('2019-10-09 12:01:17','omkar deshpande(2525252525) has paid you amount :111','7709833124');
+INSERT INTO `notification` VALUES ('2019-10-03 20:01:29','shubham(7721071250) has requested that you had borrowed amount :500','2525252525'),('2019-10-03 20:01:54','omkar deshpande(2525252525) has accpted your request that you had lend amount :500toomkar deshpande','7721071250'),('2019-10-03 20:03:54','omkar deshpande(2525252525) has paid you amount :500','7721071250'),('2019-10-03 21:47:24','shubham(7721071250) has requested that you had borrowed amount :500','2525252525'),('2019-10-03 21:47:59','omkar deshpande(2525252525) has accpted your request that you had lend amount :500toomkar deshpande','7721071250'),('2019-10-03 21:48:40','omkar deshpande(2525252525) has paid you amount :500','7721071250'),('2019-10-09 09:10:04','omkar deshpande(2525252525) has requested that you had borrowed amount :100','7709833124'),('2019-10-09 09:10:14','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7709833124'),('2019-10-09 09:10:30','omkar deshpande(2525252525) has requested that you had borrowed amount :123','7709833124'),('2019-10-09 09:11:21','omkar deshpande(null) has accpted your request that you had lend amount :123toomkar deshpande','2525252525'),('2019-10-09 09:39:33','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7721071250'),('2019-10-09 09:45:16','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7709833124'),('2019-10-09 09:45:48','omkar deshpande(7709833124) has rejected your request that you had lend amount :200toomkar deshpande','2525252525'),('2019-10-09 09:45:59','omkar deshpande(7709833124) has rejected your request that you had lend amount :200toomkar deshpande','2525252525'),('2019-10-09 09:46:15','omkar deshpande(7709833124) has rejected your request that you had lend amount :100toomkar deshpande','2525252525'),('2019-10-09 09:46:24','omkar deshpande(2525252525) has requested that you had borrowed amount :200','7709833124'),('2019-10-09 09:58:41','omkar(1111111111) has requested that you had borrowed amount :10','7709833124'),('2019-10-09 10:00:26','omkar(1111111111) has requested that you had borrowed amount :100','7709833124'),('2019-10-09 10:04:25','omkar(1111111111) has requested that you had borrowed amount :11','7709833124'),('2019-10-09 10:10:10','omkar deshpande(7709833124) has rejected your request that you had lend amount :200toomkar deshpande','2525252525'),('2019-10-09 10:10:10','omkar deshpande(7709833124) has rejected your request that you had lend amount :10toomkar deshpande','1111111111'),('2019-10-09 10:10:11','omkar deshpande(7709833124) has rejected your request that you had lend amount :100toomkar deshpande','1111111111'),('2019-10-09 10:10:11','omkar deshpande(7709833124) has rejected your request that you had lend amount :11toomkar deshpande','1111111111'),('2019-10-09 10:10:26','omkar(1111111111) has requested that you had borrowed amount :100','7709833124'),('2019-10-09 10:11:13','omkar deshpande(null) has accpted your request that you had lend amount :100toomkar deshpande','1111111111'),('2019-10-09 10:13:53','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:13:55','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:13:58','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:14:02','omkar deshpande(7709833124) has paid you amount :123','2525252525'),('2019-10-09 10:14:14','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 10:27:58','omkar deshpande(7709833124) has paid you amount :123','2525252525'),('2019-10-09 11:18:16','omkar deshpande(7709833124) has paid you amount :100','1111111111'),('2019-10-09 11:18:25','omkar deshpande(7709833124) has paid you amount :123','2525252525'),('2019-10-09 11:58:42','omkar(1111111111) has requested that you had borrowed amount :111','7709833124'),('2019-10-09 11:59:54','omkar deshpande(null) has accpted your request that you had lend amount :111toomkar deshpande','1111111111'),('2019-10-09 12:00:02','omkar deshpande(7709833124) has paid you amount :111','1111111111'),('2019-10-09 12:00:43','omkar deshpande(7709833124) has paid you amount :111','1111111111'),('2019-10-09 12:01:00','omkar deshpande(7709833124) has requested that you had borrowed amount :111','2525252525'),('2019-10-09 12:01:15','omkar deshpande(null) has accpted your request that you had lend amount :111toomkar deshpande','7709833124'),('2019-10-09 12:01:17','omkar deshpande(2525252525) has paid you amount :111','7709833124'),('2019-10-09 14:25:37','shubham(null) has accpted your request that you had lend amount :200toshubham','2525252525'),('2019-10-09 15:29:40','shubham(7721071250) has paid you amount :200','2525252525'),('2019-10-09 20:38:20','chirag(9422738098) has requested that you had borrowed amount :500','7721071250'),('2019-10-09 20:38:43','shubham(null) has accpted your request that you had lend amount :500toshubham','9422738098'),('2019-10-09 20:39:35','shubham(7721071250) has paid you amount :500','9422738098'),('2019-10-09 20:39:45','shubham(7721071250) has paid you amount :500','9422738098'),('2019-10-09 20:39:54','shubham(7721071250) has paid you amount :500','9422738098'),('2019-10-09 20:40:07','shubham(7721071250) has paid you amount :500','9422738098');
 /*!40000 ALTER TABLE `notification` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,7 +229,7 @@ CREATE TABLE `pendingpersonalrequests` (
   KEY `borrower` (`borrower`),
   CONSTRAINT `pendingpersonalrequests_ibfk_1` FOREIGN KEY (`lender`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `pendingpersonalrequests_ibfk_2` FOREIGN KEY (`borrower`) REFERENCES `user` (`phone`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,7 +238,6 @@ CREATE TABLE `pendingpersonalrequests` (
 
 LOCK TABLES `pendingpersonalrequests` WRITE;
 /*!40000 ALTER TABLE `pendingpersonalrequests` DISABLE KEYS */;
-INSERT INTO `pendingpersonalrequests` VALUES (200,'2525252525','7721071250',56);
 /*!40000 ALTER TABLE `pendingpersonalrequests` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -258,7 +258,7 @@ CREATE TABLE `personalevent` (
   KEY `borrower` (`borrower`),
   CONSTRAINT `personalevent_ibfk_1` FOREIGN KEY (`lender`) REFERENCES `user` (`phone`),
   CONSTRAINT `personalevent_ibfk_2` FOREIGN KEY (`borrower`) REFERENCES `user` (`phone`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,9 +272,9 @@ UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -292,9 +292,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -384,7 +384,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('1111111111','sdfsd','omkar',1111,'pass'),('1234567890','shubhamdarak37@gmil.com','shubham',1000,'1234'),('2222222222','omkar@gmail.com','omkar',1000,'password'),('2525252525','deshpandeomkar77@gmail.com','omkar deshpande',889,'123456'),('7350766736','atharva.chavan29@gmail.com','atharva chvan',1000,'atharva123'),('7350766738','gaikwadsampada8@gmail.com','atharva',1000,'sam29'),('770983312','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7709833124','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7721065893','shubhamdarak37@gmil.com','atharva',1000,'at'),('7721071250','shubhamdarak37@gmil.com','shubham',1000,'sd'),('7721088542','shubhamdarak37@gmil.com','omkar',1000,'omkar'),('7789456123','shubhamdarak37@gmil.com','shubham',1000,'sd'),('7972663093','dschandak@gmail.com','Devesh Chandak',1000,'devesh_111'),('9876543210','user@gmail.com','usera',1000,'9876543210');
+INSERT INTO `user` VALUES ('1111111111','sdfsd','omkar',494838,'pass'),('1234567890','shubhamdarak37@gmil.com','shubham',1000,'1234'),('2222222222','omkar@gmail.com','omkar',1000,'password'),('2525252525','deshpandeomkar77@gmail.com','omkar deshpande',714,'123456'),('7350766736','atharva.chavan29@gmail.com','atharva chvan',1000,'atharva123'),('7350766738','gaikwadsampada8@gmail.com','atharva',1000,'sam29'),('770983312','deshpandeomkar77@gmail.com','omkar deshpande',1000,'123456'),('7709833124','deshpandeomkar77@gmail.com','omkar deshpande',-492452,'123456'),('7721065893','shubhamdarak37@gmil.com','atharva',1000,'at'),('7721071250','shubhamdarak37@gmil.com','shubham',700,'sd'),('7721088542','shubhamdarak37@gmil.com','omkar',1000,'omkar'),('7789456123','shubhamdarak37@gmil.com','shubham',1000,'sd'),('7972663093','dschandak@gmail.com','Devesh Chandak',1000,'devesh_111'),('9422738098','chirag123@gmail.com','chirag',5010,'cp'),('9876543210','user@gmail.com','usera',1000,'9876543210');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,11 +399,13 @@ CREATE TABLE `useringroup` (
   `amount` int(11) DEFAULT NULL,
   `eventId` int(11) DEFAULT NULL,
   `user` varchar(11) DEFAULT NULL,
+  `pid` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`pid`),
   KEY `eventId` (`eventId`),
   KEY `user` (`user`),
   CONSTRAINT `useringroup_ibfk_2` FOREIGN KEY (`eventId`) REFERENCES `groupevent` (`eventId`),
   CONSTRAINT `useringroup_ibfk_3` FOREIGN KEY (`user`) REFERENCES `user` (`phone`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -412,21 +414,39 @@ CREATE TABLE `useringroup` (
 
 LOCK TABLES `useringroup` WRITE;
 /*!40000 ALTER TABLE `useringroup` DISABLE KEYS */;
-INSERT INTO `useringroup` VALUES (375,1,'7709833124'),(375,1,'2525252525'),(375,1,'1111111111'),(50,2,'7709833124'),(50,2,'2222222222'),(100,3,'7721071250'),(100,3,'1111111111'),(100,3,'2222222222'),(20,4,'1111111111'),(-493827,5,'1111111111');
+INSERT INTO `useringroup` VALUES (375,1,'7709833124',1),(50,2,'7709833124',4),(50,2,'2222222222',5),(100,3,'2222222222',8);
 /*!40000 ALTER TABLE `useringroup` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `onuseringroup` AFTER INSERT ON `useringroup` FOR EACH ROW BEGIN
 	update user set wallet=wallet + new.amount where phone=new.user;
 	insert into allLog values (new.amount,CONCAT("You participated in group event ",(select description from groupevent where eventId=new.eventId)),new.user);
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `ondeleteuseringroupevent` BEFORE DELETE ON `useringroup` FOR EACH ROW BEGIN
+	update user set wallet=wallet - old.amount where phone=old.user;
+    update user set wallet=wallet + old.amount where phone=(select owner from groupevent where eventId=old.eventId);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -471,9 +491,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -492,9 +512,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -515,9 +535,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -534,9 +554,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -553,9 +573,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -572,9 +592,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -591,9 +611,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -616,9 +636,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -654,13 +674,32 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `paygroupmoney` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `paygroupmoney`(IN id int)
+BEGIN	
+	delete from useringroup where pid=id;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `paymoney` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -677,9 +716,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -700,9 +739,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -720,9 +759,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -739,9 +778,9 @@ DELIMITER ;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = cp850 */ ;
-/*!50003 SET character_set_results = cp850 */ ;
-/*!50003 SET collation_connection  = cp850_general_ci */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
@@ -764,4 +803,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-10-09 12:09:48
+-- Dump completed on 2019-10-09 23:35:55
