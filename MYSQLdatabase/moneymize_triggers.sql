@@ -24,7 +24,6 @@ DROP TRIGGER IF EXISTS onuseringroup//
 
 CREATE TRIGGER onuseringroup  after insert on useringroup for each row 
 BEGIN
-	update user set wallet=wallet + new.amount where phone=new.user;
 	insert into allLog values (new.amount,CONCAT("You participated in group event ",(select description from groupevent where eventId=new.eventId)),new.user);
 END //
 
@@ -38,12 +37,6 @@ BEGIN
 	insert into allLog values (old.amount,CONCAT((select name from user where phone=old.lender)," paid your pending amount"),old.lender);
 END //
 
-DROP TRIGGER IF EXISTS ondeleteuseringroupevent//
-CREATE TRIGGER ondeleteuseringroupevent  before delete on useringroup for each row 
-BEGIN
-	update user set wallet=wallet - old.amount where phone=old.user;
-    update user set wallet=wallet + old.amount where phone=(select owner from groupevent where eventId=old.eventId);
-END //
 
 
 
@@ -51,8 +44,7 @@ DROP TRIGGER IF EXISTS ondailyexpensesum//
 
 CREATE TRIGGER ondailyexpensesum  before insert on dailycategory for each row 
 BEGIN
-	update dailyexpenses SET total_amount=total_amount + new.amount where expenseId=expenseId;
-	insert into allLog values (new.amount,CONCAT("You spent money on ",new.category),(select user from dailyexpenses where expenseId=new.expenseId),(select user from dailyexpenses where expenseId=expenseId)); 
+	insert into allLog values (new.amount,CONCAT("You spent money on ",new.category),(select user from dailyexpenses where expenseId=new.expenseId)); 
 END //
 
 

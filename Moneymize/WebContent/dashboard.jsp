@@ -5,6 +5,7 @@
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
+<%@page import="com.Moneymize.info.pendinggrouprequest"%>
 
 
 <%@page import="java.util.ArrayList"%>
@@ -210,6 +211,11 @@
           </div>
         </div>
 
+
+
+ 
+
+
         <div class="row col-md-12" >
           <div class="col-lg-6 col-md-6" >
             <div class="card card-tasks" style="max-height:220px ">
@@ -227,7 +233,7 @@
                       %>
                       <tr>
                         <td>
-                          <p class="text"><%=pevents.get(i).getAmount() + " --> " +  pevents.get(i).getLender()%></p>
+                          <p class="text"><%=pevents.get(i).getAmount() + " --> " +  pevents.get(i).getLender() + " had lend money to " + pevents.get(i).getBorrower()%></p>
                         </td>
 
                          <td class="td-actions text-right">
@@ -267,12 +273,12 @@
                           <p class="text"><%= gevents.get(i).getTotalAmt() + " -> " + gevents.get(i).getOwner() +" : "+ gevents.get(i).getDescription() %></p>
                                                </td>
                                                <td class="td-actions text-right">
-                                                                       <form action="" method="post">
-                                               
-                                  <input type="number" value="<%=gevents.get(i).getPid()%>" name="eid" hidden>
-                                               
+                        <form action="" method="post">
+                      <input type="number" value="<%= gevents.get(i).getEid() %>" name="eid" hidden>
+                      
                       <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="paygroupmoney" >Pay</button>
                       </form>
+                      
                         </td>
                       </tr>
                      <%}}%> 
@@ -281,8 +287,64 @@
                 </div>
               </div>
             </div>
+          </div>          
+        </div>
+
+
+<div class="row col-md-12" >
+          <div class="col-lg-6 col-md-6" >
+            <div class="card card-tasks" style="max-height:220px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">group Pending request</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+                     <%   ArrayList<pendinggrouprequest> pendinggroupevent=(ArrayList<pendinggrouprequest>) session.getAttribute("pendinggroupevent");  
+                        if (pendinggroupevent!=null){
+                      for (int i=0;i<pendinggroupevent.size();i++) {   
+                      %>
+                      <form method="post">
+                        <tr>
+                          <td>
+                            <p class="text"><%= pendinggroupevent.get(i).getAmount() + " -> " + pendinggroupevent.get(i).getOwner() %></p>
+                          </td>
+                          <td><input type="number" name="reqId" value="<%=pendinggroupevent.get(i).getId() %>" hidden></td>
+                          <td class="td-actions text-right">
+                            <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="acceptgrouprequest" >Approve</button>
+                          </td>
+                          <td class="td-actions text-right">
+                            <button class="btn btn-danger  btn-sm btn-link" type="submit" formaction="rejectgrouprequest" >Reject</button>
+                          </td>
+                        </tr>
+                      </form>
+                     <%}}%> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" >
+            <div class="card card-tasks" style="max-height:220px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">unknown</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+                    
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+
 
       </div>
       

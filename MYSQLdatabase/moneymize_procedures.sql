@@ -17,17 +17,23 @@ END //
 
 
 DROP PROCEDURE IF EXISTS insertuseringroup//
-CREATE PROCEDURE insertuseringroup (IN amount int,IN eid int,IN user CHAR(11))
+CREATE PROCEDURE insertuseringroup (IN amount int,IN eid int,IN user CHAR(11),IN id int)
 BEGIN
-	INSERT INTO useringroup values(amount,eid,user);
+	INSERT INTO useringroup(amount,eventId,user) values(amount,eid,user);
+    delete from pendinggrouprequests where pid = id;
 END //
 
+DROP PROCEDURE IF EXISTS insertuseringrouprequest//
+CREATE PROCEDURE insertuseringrouprequest (IN amount int,IN eid int,IN user CHAR(11))
+BEGIN
+	INSERT INTO pendinggrouprequests(amount,user,eid) values(amount,user,eid);
+END //
 
 
 DROP PROCEDURE IF EXISTS adduseringroup//
 CREATE PROCEDURE adduseringroup (IN amt int,IN eid int,IN user char(11)) 
 BEGIN
-	INSERT INTO useringroup values(amt,eid,user);
+	INSERT INTO useringroup(amount,eventId,user) values(amt,eid,user);
 END //
 
 
@@ -48,6 +54,8 @@ IF NOT EXISTS (select * from dailyexpenses where Date = CURRENT_DATE and user = 
 	end if;
 	INSERT INTO dailycategory(expenseId,category,amount) values((select expenseId from dailyexpenses where user=phones and Date = CURRENT_DATE),category,amount);
 	update user set wallet = wallet - amount where phone = phones;
+	update dailyexpenses SET total_amount=total_amount + amount where user=phones and Date = CURRENT_DATE;
+
 END //
 
 
@@ -73,11 +81,11 @@ BEGIN
 END //
 
 DROP PROCEDURE IF EXISTS paygroupmoney//
-CREATE PROCEDURE paygroupmoney (IN id int) 
+CREATE PROCEDURE paygroupmoney (IN id int,IN userr varchar(11)) 
 BEGIN	
+	update user set wallet = wallet - (select amount from useringroup where pid = id) where phone=userr;
 	delete from useringroup where pid=id;
 END //
-
 
 DROP PROCEDURE IF EXISTS addParent//
 CREATE PROCEDURE addParent (IN parent varchar(11),IN child varchar(11)) 

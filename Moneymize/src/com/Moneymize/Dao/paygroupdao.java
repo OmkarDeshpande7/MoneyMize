@@ -13,71 +13,69 @@ import com.Moneymize.info.groupevent;
 import com.Moneymize.info.notification;
 import com.Moneymize.info.pendingpersonalrequests;
 import com.Moneymize.info.personalevent;
-import com.mysql.cj.protocol.Resultset;
 
-public class paygroupdao
+public class paygroupDao
 {
-	String sql1 = "call paygroupmoney(?)";
-	String sql2 = "select * from useringroup,groupevent where user=? and useringroup.eventId = groupevent.eventId";
+	String sql1 = "call paygroupmoney(?,?)";
+	String sql4 = "select * from useringroup,groupevent where user=? and useringroup.eventId = groupevent.eventId";
 	 String sql7 = "select * from user where phone=?";
-		String sql15 = "select * from notification where user=?";
 
 	String url = "jdbc:mysql://localhost:3306/Moneymize?allowPublicKeyRetrieval=true";
 	String username = "root";
 	String password = "#ironmanROCKX64";
 	int pid;
 	private Connection con;	
-	   public void payg(int eid,HttpServletRequest request)
-	   {
-		   HttpSession session = request.getSession();
-		   ArrayList<groupevent> gevents=(ArrayList<groupevent>) session.getAttribute("gevents");
+	
 
-		   try {
-				Class.forName("com.mysql.jdbc.Driver").newInstance();
-		   
-			    con = DriverManager.getConnection(url,username,password);
-			    String uname = (String) session.getAttribute("phone");
-				PreparedStatement st1 = con.prepareStatement(sql1);
-				st1.setInt(1, eid);
-				st1.executeUpdate();
-				
-				PreparedStatement st2 = con.prepareStatement(sql2);
-				st2.setString(1, uname);
-				ResultSet rs2 = st2.executeQuery();
-				
-				PreparedStatement st7 = con.prepareStatement(sql7);
-				st7.setString(1, uname);
-				ResultSet rs7 = st7.executeQuery();
-				
-				gevents.clear();
-				
-				while(rs2.next())
-				{
-					groupevent newgevent = new groupevent();
-					newgevent.setTotalAmt((Integer.parseInt(rs2.getString(1))));
-					newgevent.setOwner(rs2.getString(9));
-					newgevent.setDescription(rs2.getString(6));
-					newgevent.setEid(rs2.getInt(2));
-					newgevent.setPid(rs2.getInt(4));
-					gevents.add(newgevent);
-					session.setAttribute("gevents",gevents);
-				}
-				if(rs7.absolute(1))
-				{
-					String wallets = rs7.getString(4);
-					session.setAttribute("walletst",wallets);
-				}
+public void pay(int pid,HttpServletRequest request) 
+{
+	HttpSession session = request.getSession();
+	ArrayList<groupevent> gevents=(ArrayList<groupevent>) session.getAttribute("gevents"); 
+	try {
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    con = DriverManager.getConnection(url,username,password);
+	    PreparedStatement st = con.prepareStatement(sql1);
+		st.setInt(1, pid);
+		String uname = (String) session.getAttribute("phone");
+
+		st.setString(2, uname);
+		st.executeUpdate();
+		
+		if (gevents!=null)
+		gevents.clear();
+		PreparedStatement st3 = con.prepareStatement(sql4);
+		st3.setString(1, uname);
+		ResultSet rs3 = st3.executeQuery();
+			while(rs3.next())
+			{
 				
 				
+				groupevent newevent = new groupevent();
+				newevent.setEid(Integer.parseInt(rs3.getString(4)));
+				newevent.setTotalAmt((Integer.parseInt(rs3.getString(1))));
+				newevent.setOwner(rs3.getString(9));
+				newevent.setDescription(rs3.getString(6));
+				gevents.add(newevent);
 				session.setAttribute("gevents",gevents);
-
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			}
+			
+			session.setAttribute("gevents",gevents);
+			PreparedStatement st7 = con.prepareStatement(sql7);
+			st7.setString(1, uname);
+			ResultSet rs7 = st7.executeQuery();
+			if(rs7.absolute(1))
+			{
+				System.out.println("wallet");
+				String wallets = rs7.getString(4);
+				session.setAttribute("walletst",wallets);
+			}
+
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
-	private Resultset executeQuery() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	}
+}
+
+
+}

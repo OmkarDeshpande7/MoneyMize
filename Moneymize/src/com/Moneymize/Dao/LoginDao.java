@@ -7,9 +7,11 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.Moneymize.info.alllog;
 import com.Moneymize.info.dailyexpense;
 import com.Moneymize.info.groupevent;
 import com.Moneymize.info.notification;
+import com.Moneymize.info.pendinggrouprequest;
 import com.Moneymize.info.pendingpersonalrequests;
 import com.Moneymize.info.personalevent;
 
@@ -20,8 +22,10 @@ public class LoginDao {
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	String sql3 = "select * from pendingpersonalrequests where borrower=?";
 	String sql4 = "select * from useringroup,groupevent where user=? and useringroup.eventId = groupevent.eventId";
+	String sql10 = "select * from pendinggrouprequests,groupevent where user=? and pendinggrouprequests.eid = groupevent.eventId";
 	String sql5 = "select * from notification where user=?";
 	 String sql7 = "select * from user where phone=?";
+	 String sql9 = "select * from alllog where user=?";
 	 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=CURRENT_DATE)";
 	 
 
@@ -37,6 +41,9 @@ public class LoginDao {
 	List<groupevent> gevents = new ArrayList<groupevent>();
 	List<dailyexpense> devents = new ArrayList<dailyexpense>();
 	List<notification> nevents = new ArrayList<notification>();
+	List<alllog> logevent = new ArrayList<alllog>();
+	List<pendinggrouprequest> pendinggroupevent = new ArrayList<pendinggrouprequest>();
+
 
 
 
@@ -78,14 +85,22 @@ public class LoginDao {
 				st8.setString(1, uname);
 				ResultSet rs8 = st8.executeQuery();
 				
+				PreparedStatement st9 = con.prepareStatement(sql9);
+				st9.setString(1, uname);
+				ResultSet rs9 = st9.executeQuery();
+				
+				PreparedStatement st10 = con.prepareStatement(sql10);
+				st10.setString(1, uname);
+				ResultSet rs10 = st10.executeQuery();
+				
 				PreparedStatement st7 = con.prepareStatement(sql7);
 				st7.setString(1, uname);
 				ResultSet rs7 = st7.executeQuery();
-				if(rs7.absolute(1))
-				{
+				rs7.absolute(1);
+				
 					String wallet = rs7.getString(4);
 					session.setAttribute("walletst",wallet);
-				}
+				
 				
 				while(rs1.next())
 				{
@@ -118,13 +133,14 @@ public class LoginDao {
 				
 				while(rs3.next())
 				{
-					groupevent newgevent = new groupevent();
-					newgevent.setTotalAmt((Integer.parseInt(rs3.getString(1))));
-					newgevent.setOwner(rs3.getString(9));
-					newgevent.setDescription(rs3.getString(6));
-					newgevent.setEid(rs3.getInt(2));
-					newgevent.setPid(rs3.getInt(4));
-					gevents.add(newgevent);
+					
+	
+					groupevent newevent = new groupevent();
+					newevent.setEid(Integer.parseInt(rs3.getString(4)));
+					newevent.setTotalAmt((Integer.parseInt(rs3.getString(1))));
+					newevent.setOwner(rs3.getString(9));
+					newevent.setDescription(rs3.getString(6));
+					gevents.add(newevent);
 					session.setAttribute("gevents",gevents);
 	
 				}
@@ -136,6 +152,25 @@ public class LoginDao {
 					dailyevent.setCategory(rs8.getString(2));
 					devents.add(dailyevent);
 					session.setAttribute("devents",devents);
+				}
+				
+				while(rs9.next())
+				{
+					alllog alllogevent = new alllog();
+					alllogevent.setAmount((Integer.parseInt(rs9.getString(1))));
+					alllogevent.setDescription(rs9.getString(2));
+					logevent.add(alllogevent);
+					session.setAttribute("logevent",logevent);
+				}
+				
+				while(rs10.next())
+				{
+					pendinggrouprequest pendingevent = new pendinggrouprequest();
+					pendingevent.setAmount((Integer.parseInt(rs10.getString(1))));
+					pendingevent.setId(Integer.parseInt(rs10.getString(3)));
+					pendingevent.setOwner(rs10.getString(9));
+					pendinggroupevent.add(pendingevent);
+					session.setAttribute("pendinggroupevent",pendinggroupevent);
 				}
 				
 				while(rs5.next())
@@ -153,6 +188,8 @@ public class LoginDao {
 				session.setAttribute("gevents",gevents);
 				session.setAttribute("devents",devents);
 				session.setAttribute("nevents",nevents);
+				session.setAttribute("pendinggroupevent",pendinggroupevent);
+				session.setAttribute("logevent",logevent);
 
 				return true;	
 			}

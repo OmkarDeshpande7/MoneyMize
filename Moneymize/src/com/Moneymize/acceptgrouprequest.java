@@ -6,27 +6,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.Moneymize.Dao.payDao;
-import com.Moneymize.Dao.paygroupDao;
+import com.Moneymize.Dao.acceptRequestdao;
+import com.Moneymize.Dao.acceptgrouprequestdao;
 
 
-@WebServlet("/paygroupmoney")
-public class paygroupmoney extends HttpServlet {
+@WebServlet("/acceptgrouprequest")
+public class acceptgrouprequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
    
-    public paygroupmoney() {
+    public acceptgrouprequest() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-
+int pid;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		int eid = Integer.parseInt(request.getParameter("eid"));
-		paygroupDao daor = new paygroupDao();
-		daor.pay(eid,request);
+		HttpSession session = request.getSession();
+		pid = Integer.parseInt(request.getParameter("reqId"));
+		System.out.println(pid + "from group");
+		acceptgrouprequestdao daogr = new acceptgrouprequestdao();
+		daogr.accept(pid,request);
 		response.sendRedirect("dashboard.jsp");
 	}
 

@@ -16,8 +16,8 @@ import com.Moneymize.info.personalevent;
 
 public class addgroupDao {
 	
-	String sql1 = "call insertuseringroup(?,?,?)";
-	String sql3 = "call savegroupevent(?,NOW(),?,?)";
+	String sql1 = "call insertuseringrouprequest(?,?,?)";
+	String sql3 = "call savegroupevent(?,NOW(),?,?)";//for every day unique description should be allowed
 	String sql2 = "select * from personalevent where lender=? or borrower=?";
 	String sql4 = "select * from pendingpersonalrequests where borrower=?";
 	String sql5 = "select * from pendingpersonalrequests where pid = ?";

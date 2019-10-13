@@ -160,9 +160,82 @@
             </form>
           </div>
         </div>
-        
-      </div>
-     
+       
+     <div class="row col-md-12" >
+          <div class="col-lg-6 col-md-6" >
+            <div class="card card-tasks" style="max-height:220px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">Pending</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+                     <%   ArrayList<pendingpersonalrequests> requests=(ArrayList<pendingpersonalrequests>) session.getAttribute("requests");  
+                        if (requests!=null){
+                      for (int i=0;i<requests.size();i++) {   
+                      %>
+                      <form method="post">
+                        <tr>
+                          <td>
+                            <p class="text"><%= requests.get(i).getAmount() + " -> " + requests.get(i).getLender() %></p>
+                          </td>
+                          <td><input type="number" name="reqId" value="<%=requests.get(i).getId() %>" hidden></td>
+                          <td class="td-actions text-right">
+                            <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="acceptS" >Approve</button>
+                          </td>
+                          <td class="td-actions text-right">
+                            <button class="btn btn-danger  btn-sm btn-link" type="submit" formaction="rejectS" >Reject</button>
+                          </td>
+                        </tr>
+                      </form>
+                     <%}}%> 
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" >
+            <div class="card card-tasks" style="max-height:220px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">Personal Expense</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+                    
+                     <%   ArrayList<personalevent> pevents=(ArrayList<personalevent>) session.getAttribute("pevents");  
+                              if (pevents!=null){
+                                       for (int i=0;i<pevents.size();i++) {   
+                      %>
+                      <tr>
+                        <td>
+                          <p class="text"><%=pevents.get(i).getAmount() + " --> " +  pevents.get(i).getLender() + " had lend money to " + pevents.get(i).getBorrower()%></p>
+                        </td>
+
+                         <td class="td-actions text-right">
+                            
+                        <form action="" method="post">
+                      <input type="number" value="<%= pevents.get(i).getEid() %>" name="eid" hidden>
+                      <%
+                      if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone"))) {%>
+                      <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="payS" >Pay</button>
+                      <%} %>
+                      </form>
+                          </td>
+                      </tr>
+                     <%}}%> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    
     </div>
   </div>
   <div class="fixed-plugin">
@@ -192,6 +265,7 @@
       </ul>
     </div>
   </div>
+  
   <!--   Core JS Files   -->
   <script src="${pageContext.request.contextPath}/assets/js/core/jquery.min.js"></script>
   <script src="${pageContext.request.contextPath}/assets/js/core/popper.min.js"></script>

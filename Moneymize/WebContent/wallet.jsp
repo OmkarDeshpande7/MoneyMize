@@ -5,6 +5,8 @@
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
+<%@page import="com.Moneymize.info.alllog"%>
+
 
 
 <%@page import="java.util.ArrayList"%>
@@ -121,6 +123,9 @@
           </div>
         </div>
       </nav>
+      
+      
+      
       <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -162,6 +167,35 @@
             </form>
           </div>
         </div>
+
+ <div class="col-lg-6 col-md-6" >
+            <div class="card card-tasks" style="max-height:220px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">All Transactions</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+                    	 <%   ArrayList<alllog> logevent=(ArrayList<alllog>) session.getAttribute("logevent");  
+    if (logevent!=null){
+	for (int i=0;i<logevent.size();i++) {   
+	%>
+                      <tr>
+                        <td>
+                          <p class="text"><%= logevent.get(i).getAmount() + " -> " + logevent.get(i).getDescription() %></p>
+                        </td>
+                      </tr>
+                     <%}}%> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
       </div>
      
