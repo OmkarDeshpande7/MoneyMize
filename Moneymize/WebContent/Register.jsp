@@ -53,26 +53,26 @@ session.setAttribute("errorRegisterMessage", null);
       <div class="form-row">
         <div class="form-group col-md-6">
           <label >Full name</label>
-          <input type="text" class="form-control" id="full_name" name="full-name" placeholder="Full name">
+          <input type="text" class="form-control" id="full_name" name="full-name" placeholder="Full name" required>
         </div>
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" id="email_address" name="email-address" placeholder="Email">
+          <input type="email" class="form-control" id="email_address" name="email-address" placeholder="Email" required>
         </div>
       </div>
       <div class="form-row">
          <div class="form-group col-md-6">
           <label >Mobile</label>
-          <input type="type" class="form-control" id="phone_number" name="phone-no" placeholder="Mobile">
+          <input type="type" class="form-control" maxlength="10" id="phone_number" name="phone-no" placeholder="Mobile" required>
         </div>
         <div class="form-group col-md-6">
           <label for="inputPassword4">Password</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
         </div>
       </div>
       <div class="form-group">
         <label>Initial Wallet Balance</label>
-        <input type="text" class="form-control" id="balance" name="wallet" placeholder="Initial wallet balance">
+        <input type="number" class="form-control" id="balance" name="wallet" min="0" step="1" placeholder="Initial wallet balance" required>
       </div>
       </div>
       

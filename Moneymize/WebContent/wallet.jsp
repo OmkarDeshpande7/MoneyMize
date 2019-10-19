@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@page import="com.Moneymize.Dao.LoginDao"%>
 <%@page import="com.Moneymize.info.groupevent"%>
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
+<%@page import="com.Moneymize.info.pendinggrouprequest"%>
 <%@page import="com.Moneymize.info.alllog"%>
-<%@page import="com.Moneymize.Dao.LoginDao"%>
-
 
 
 <%@page import="java.util.ArrayList"%>
@@ -31,7 +31,7 @@
 </head>
 
 <body class="">
-<%
+ <%
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
 response.setHeader("Pragma", "no-cache");//1.0
 response.setHeader("Expires", "0");//proxies
@@ -47,7 +47,6 @@ else if(session.getAttribute("errorMessage")=="NOO")
 }
 
 %>
-
   <div class="wrapper">
     <div class="sidebar" id="sidebarhide">
       <div class="sidebar-wrapper">
@@ -185,10 +184,10 @@ else if(session.getAttribute("errorMessage")=="NOO")
               <div class="row">
                   <h5 style="margin-top: 10px">Add money:</h5>
                 <div class="col">
-                  <input type="text" class="form-control" name="amount" placeholder="Amount">
+                  <input type="number" min="0" step="1" max="20000" class="form-control" name="amount" placeholder="Amount">
                 </div>
                 <div class="col">
-                  <button class="btn btn-success btn-round btn-sm animation-on-hover" type="submit">Show</button>
+                  <button class="btn btn-success btn-round btn-sm animation-on-hover" type="submit">Add</button>
                 </div>
               </div>
               
@@ -214,7 +213,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
 	%>
                       <tr>
                         <td>
-                          <p class="text"><%= logevent.get(i).getAmount() + " -> " + logevent.get(i).getDescription() %></p>
+                          <p class="text" style="font-weight:bold;"><%= logevent.get(i).getAmount() + " -> " + logevent.get(i).getDescription() %></p>
                         </td>
                       </tr>
                      <%}}%> 
@@ -402,6 +401,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
       });
   </script>
   
+
 
 
 </body>

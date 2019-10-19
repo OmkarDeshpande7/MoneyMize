@@ -16,7 +16,6 @@ public class logout extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		System.out.println("poweing off....");
 		session.removeAttribute("phone");
 		session.removeAttribute("wallet");
 		session.removeAttribute("errorMessage");
@@ -30,6 +29,7 @@ public class logout extends HttpServlet {
 		session.removeAttribute("nevents");
 		session.removeAttribute("pendinggroupevent");
 		session.removeAttribute("logevent");
+
 		session.invalidate();
 		response.sendRedirect("index.jsp");
 	}

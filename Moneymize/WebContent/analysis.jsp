@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@page import="com.Moneymize.Dao.LoginDao"%>
-
 <%@page import="com.Moneymize.info.groupevent"%>
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
+<%@page import="com.Moneymize.info.pendinggrouprequest"%>
 
 
 <%@page import="java.util.ArrayList"%>
@@ -30,7 +30,7 @@
 </head>
 
 <body class="">
-<%
+ <%
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
 response.setHeader("Pragma", "no-cache");//1.0
 response.setHeader("Expires", "0");//proxies
@@ -172,7 +172,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
 
         <div class="row">
           <div class="col-12">
-            <div class="card card-chart">
+            <div class="card card-chart" >
               <div class="card-header ">
                 <div class="row">
                   <div class="col-sm-6 text-left">
@@ -183,7 +183,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="chartBig1"></canvas>
+                  <canvas id="chartBig1" ></canvas>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
               </div>
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="chartLinePurple"></canvas>
+                  <canvas id="chartLinePurple" ></canvas>
                 </div>
               </div>
             </div>
@@ -403,7 +403,6 @@ else if(session.getAttribute("errorMessage")=="NOO")
         application: "black-dashboard-free"
       });
   </script>
-  
 </body>
 
 </html>

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@page import="com.Moneymize.Dao.LoginDao"%>
-
 <%@page import="com.Moneymize.info.groupevent"%>
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
+<%@page import="com.Moneymize.info.pendinggrouprequest"%>
 
 
 <%@page import="java.util.ArrayList"%>
@@ -29,7 +29,7 @@
 </head>
 
 <body class="">
-<%
+ <%
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
 response.setHeader("Pragma", "no-cache");//1.0
 response.setHeader("Expires", "0");//proxies
@@ -45,7 +45,6 @@ else if(session.getAttribute("errorMessage")=="NOO")
 }
 
 %>
-
   <div class="wrapper"> 
     <div class="sidebar">
       <div class="sidebar-wrapper">
@@ -178,8 +177,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
             <form action="dailyexenseS" method="post">
               <div class="row">
                 <div class="col">
-                  <select id="inputState" class="form-control" name="category">
-                    <option style="background-color: #32325d" selected>Choose...</option>
+                  <select id="inputState" class="form-control" name="category" reqired>
                     <option value="Breakfast" style="background-color: #32325d">Breakfast</option>
                     <option value="Lunch" style="background-color: #32325d">Lunch</option>
                     <option value="Evening Breakfast" style="background-color: #32325d">Evening breakfast</option>
@@ -187,7 +185,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
                   </select>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Amount" name="dailyamount">
+                  <input type="number" min="0" step="1" max="${walletst}" class="form-control" placeholder="Amount" name="dailyamount">
                 </div>
                 <div class="col">
                   <button class="btn btn-success btn-round btn-sm animation-on-hover" type="submit">Add</button>
@@ -427,5 +425,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
       });
   </script>
 
- 
+  
+</body>
+
 </html>

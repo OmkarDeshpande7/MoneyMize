@@ -123,7 +123,7 @@ END //
 DROP PROCEDURE IF EXISTS getLatestMonthly//
 CREATE PROCEDURE getLatestMonthly (IN euser varchar(11)) 
 BEGIN	
-	select SUM(total_amount) from dailyexpenses where user = euser group by MONTH(Date) order by Date limit 12;
+	select SUM(total_amount),MONTHNAME(Date) from dailyexpenses where user = euser group by MONTH(Date) order by Date limit 12;
 END //
 
 

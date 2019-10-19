@@ -6,6 +6,7 @@
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
 <%@page import="com.Moneymize.info.pendinggrouprequest"%>
+<%@page import="com.Moneymize.info.alllog"%>
 
 
 <%@page import="java.util.ArrayList"%>
@@ -51,7 +52,6 @@ else if(session.getAttribute("errorMessage")=="NOO")
 }
 
 %>
-  
   <div class="wrapper">
     <div class="sidebar">
       <div class="sidebar-wrapper">
@@ -84,12 +84,6 @@ else if(session.getAttribute("errorMessage")=="NOO")
             <a href="personal.jsp">
               <i class="tim-icons icon-align-center"></i>
               <p>Personal events</p>
-            </a>
-          </li>
-          <li>
-            <a href="user.jsp">
-              <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
             </a>
           </li>
           <li ">
@@ -140,6 +134,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
                   <%   ArrayList<notification> nevents=(ArrayList<notification>) session.getAttribute("nevents");  
                         if (nevents!=null){
                       for (int i=nevents.size()-1;i>=0;i--) {   
+                    	  
                       %>
                       <hr>
                   <li><p class="text" style="font-size: 12px"><%= nevents.get(i).getMessage() + " : " + nevents.get(i).getDate() %></p></li>
@@ -269,9 +264,12 @@ else if(session.getAttribute("errorMessage")=="NOO")
                         <form action="" method="post">
                       <input type="number" value="<%= pevents.get(i).getEid() %>" name="eid" hidden>
                       <%
-                      if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone"))) {%>
+                      if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone")) && pevents.get(i).getAmount() < Integer.parseInt((String)session.getAttribute("walletst"))) {%>
                       <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="payS" >Pay</button>
-                      <%} %>
+                      <%}
+                      else if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone")) && pevents.get(i).getAmount() > Integer.parseInt((String)session.getAttribute("walletst"))){%>
+                      <button class="btn btn-sm btn-link" style="color:white" formaction="wallet.jsp" type="button" >  Add money to pay</button>
+                      <%}%>
                       </form>
                           </td>
                       </tr>
@@ -303,8 +301,13 @@ else if(session.getAttribute("errorMessage")=="NOO")
                                                <td class="td-actions text-right">
                         <form action="" method="post">
                       <input type="number" value="<%= gevents.get(i).getEid() %>" name="eid" hidden>
-                      
-                      <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="paygroupmoney" >Pay</button>
+                       <%if (gevents.get(i).getTotalAmt() < Integer.parseInt((String)session.getAttribute("walletst"))) {%>
+                    <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="paygroupmoney" >Pay</button>
+                    <%}
+                      else{%>
+                          <button class="btn  btn-sm btn-link" style="color:white" formaction="wallet.jsp" type="button" > Add money to pay</button>
+                      <%}%>
+                     
                       </form>
                       
                         </td>
@@ -357,13 +360,22 @@ else if(session.getAttribute("errorMessage")=="NOO")
           <div class="col-lg-6 col-md-6" >
             <div class="card card-tasks" style="max-height:220px ">
               <div class="card-header ">
-                <h6 class="title d-inline">unknown</h6>
+                <h6 class="title d-inline">All Transaction</h6>
               </div>
               <div class="card-body " >
                 <div class="table-full-width table-responsive" style="max-height:160px ">
                   <table class="table">
                     <tbody>
-                    
+                     <%   ArrayList<alllog> logevent=(ArrayList<alllog>) session.getAttribute("logevent");  
+    if (logevent!=null){
+	for (int i=0;i<logevent.size();i++) {   
+	%>
+                      <tr>
+                        <td>
+                          <p class="text" style="font-weight:bold;"><%= logevent.get(i).getAmount() + " -> " + logevent.get(i).getDescription() %></p>
+                        </td>
+                      </tr>
+                     <%}}%> 
                     </tbody>
                   </table>
                 </div>
@@ -421,7 +433,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
   <script src="${pageContext.request.contextPath}/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="${pageContext.request.contextPath}/assets/demo/demo.js"></script>
 
-  
+
 
   <script>
 
@@ -559,8 +571,6 @@ else if(session.getAttribute("errorMessage")=="NOO")
         application: "black-dashboard-free"
       });
   </script>
-  
-
 </body>
 
 </html>

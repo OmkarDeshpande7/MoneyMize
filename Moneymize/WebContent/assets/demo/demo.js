@@ -423,12 +423,33 @@ demo = {
 
 
 
-    var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', "Jul", "Aug", "Sep", "Oct", "Nov", "Dec","trtr","yty","ytu"];
-    var chart_data = [542, 480, 430, 550, 530, 453, 380, 434, 568, 610, 700, 630,484,456,789];
+    var chart_labels = [];
+    var chart_data =[];
+    
+    function change(array,month){
+    	for(var i=0;i<array.length;i++)
+    	{
+    		config.data.datasets[0].data.push(array[i]);
+    		chart_labels.push(month[i])
+    	}
+    	console.log(config.data.labels)
 
+    }
+    
+    $(document).ready(function() {
+   	 $.ajax({
+   	        url : "getChart",
+   	        type : "GET",
+   	        dataType : "text",
+   	        success : function(data) {
+   	                	var temp = JSON.parse(data);
+   	           	        change(temp.array,temp.months);
+   	        }});
 
+      });
+    
+  
     var ctx = document.getElementById("chartBig1").getContext('2d');
-
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
@@ -439,7 +460,7 @@ demo = {
       data: {
         labels: chart_labels,
         datasets: [{
-          label: "My First dataset",
+          label: "Expenses",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#d346b1',
@@ -457,29 +478,14 @@ demo = {
         }]
       },
       options: gradientChartOptionsConfigurationWithTooltipPurple
-    };
-    var myChartData = new Chart(ctx, config);
-    $("#0").click(function() {
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
-    $("#1").click(function() {
-      var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
 
-    $("#2").click(function() {
-      var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
-      var data = myChartData.config.data;
-      data.datasets[0].data = chart_data;
-      data.labels = chart_labels;
-      myChartData.update();
-    });
+
+    };
+ 
+   
+    
+    var myChartData = new Chart(ctx, config);
+    
 
 
     var ctx = document.getElementById("CountryChart").getContext("2d");

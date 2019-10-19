@@ -30,7 +30,7 @@
 </head>
 
 <body class="">
-<%
+ <%
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
 response.setHeader("Pragma", "no-cache");//1.0
 response.setHeader("Expires", "0");//proxies
@@ -190,7 +190,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
               
               <div class="row">  
                 <div class="col-md-6">
-                  <input type="number" style="margin-top:10px" class="form-control" id="totalamt" name="totalamt" placeholder="Total Amount">
+                  <input type="number" style="margin-top:10px" min="0" step="1" max="${walletst}" class="form-control" id="totalamt" name="totalamt" placeholder="Total Amount" required>
                   <input type="text" style="margin-top:10px" class="form-control" id="description" name="description" placeholder="Description">
                 </div>
               </div>
@@ -217,21 +217,19 @@ else if(session.getAttribute("errorMessage")=="NOO")
            </div>
            </div> 
         </div>
-        
-      </div>
-     
-      <div class="row col-md-12" >
+        </div>
+        <div class="row col-md-12" >
           <div class="col-lg-6 col-md-6" >
             <div class="card card-tasks" style="max-height:220px ">
               <div class="card-header ">
-                <h6 class="title d-inline">GROUP PENDING REQUEST</h6>
+                <h6 class="title d-inline">group Pending request</h6>
               </div>
               <div class="card-body " >
                 <div class="table-full-width table-responsive" style="max-height:160px ">
                   <table class="table">
                     <tbody>
 
-                    <%   ArrayList<pendinggrouprequest> pendinggroupevent=(ArrayList<pendinggrouprequest>) session.getAttribute("pendinggroupevent");  
+                      <%   ArrayList<pendinggrouprequest> pendinggroupevent=(ArrayList<pendinggrouprequest>) session.getAttribute("pendinggroupevent");  
                         if (pendinggroupevent!=null){
                       for (int i=0;i<pendinggroupevent.size();i++) {   
                       %>
@@ -249,7 +247,8 @@ else if(session.getAttribute("errorMessage")=="NOO")
                           </td>
                         </tr>
                       </form>
-                     <%}}%>  
+                     <%}}%> 
+                      
                     </tbody>
                   </table>
                 </div>
@@ -276,8 +275,13 @@ else if(session.getAttribute("errorMessage")=="NOO")
                                                <td class="td-actions text-right">
                         <form action="" method="post">
                       <input type="number" value="<%= gevents.get(i).getEid() %>" name="eid" hidden>
-                      
-                      <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="paygroupmoney" >Pay</button>
+                       <%if (gevents.get(i).getTotalAmt() < Integer.parseInt((String)session.getAttribute("walletst"))) {%>
+                    <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="paygroupmoney" >Pay</button>
+                    <%}
+                      else{%>
+                          <button class="btn  btn-sm btn-link" style="color:white" formaction="wallet.jsp" type="button" > Add money to pay</button>
+                      <%}%>
+                     
                       </form>
                       
                         </td>
@@ -290,6 +294,8 @@ else if(session.getAttribute("errorMessage")=="NOO")
             </div>
           </div>          
         </div>
+        
+      
      
     </div>
   </div>
@@ -466,8 +472,13 @@ else if(session.getAttribute("errorMessage")=="NOO")
           data:{checkval:document.getElementById("user").value},
           success : function(data) {
                   	var temp = JSON.parse(data);
-					if(temp.value)
-						addArray();
+                  	
+					if(document.getElementById("user").value == ${phone})
+						alert("We are counting on you already  !");
+					else if(temp.value)
+                  		addArray();
+					else
+						alert("This user does not exists  !");
 }
           
   });
@@ -511,9 +522,6 @@ else if(session.getAttribute("errorMessage")=="NOO")
         application: "black-dashboard-free"
       });
   </script>
-  
-  
-  
 </body>
 
 </html>

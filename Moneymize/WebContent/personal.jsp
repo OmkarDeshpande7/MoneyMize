@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@page import="com.Moneymize.Dao.LoginDao"%>
 <%@page import="com.Moneymize.info.groupevent"%>
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
-<%@page import="com.Moneymize.Dao.LoginDao"%>
-
+<%@page import="com.Moneymize.info.pendinggrouprequest"%>
 
 <%@page import="java.util.ArrayList"%>
 
@@ -29,7 +29,7 @@
 </head>
 
 <body class="">
-<%
+ <%
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
 response.setHeader("Pragma", "no-cache");//1.0
 response.setHeader("Expires", "0");//proxies
@@ -177,13 +177,13 @@ else if(session.getAttribute("errorMessage")=="NOO")
             <form action="personaleventS">
               <div class="row">
                 <div class="col">
-                  <input type="text" class="form-control" name="borrower" placeholder="Borrower">
+                  <input type="text" class="form-control" onkeyup="checku()" id="check" name="borrower" placeholder="Borrower" required>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" name="amount" placeholder="Amount">
+                  <input type="number" min="0" step="1" max="${walletst}" class="form-control" name="amount" placeholder="Amount" required>
                 </div>
                 <div class="col">
-                  <button class="btn btn-success btn-round btn-sm animation-on-hover" type="submit">Add</button>
+                  <button class="btn btn-success btn-round btn-sm animation-on-hover" id="addbutton" type="submit">Add</button>
                 </div>
               </div>
             </form>
@@ -250,9 +250,12 @@ else if(session.getAttribute("errorMessage")=="NOO")
                         <form action="" method="post">
                       <input type="number" value="<%= pevents.get(i).getEid() %>" name="eid" hidden>
                       <%
-                      if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone"))) {%>
+                      if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone")) && pevents.get(i).getAmount() < Integer.parseInt((String)session.getAttribute("walletst"))) {%>
                       <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="payS" >Pay</button>
-                      <%} %>
+                      <%}
+                      else if (pevents.get(i).getBorrower().equals((String)session.getAttribute("phone")) && pevents.get(i).getAmount() > Integer.parseInt((String)session.getAttribute("walletst"))){%>
+                          <button class="btn btn-sm btn-link" style="color:white" formaction="wallet.jsp" type="button" >  Add money to pay</button>
+                      <%}%>
                       </form>
                           </td>
                       </tr>
@@ -439,5 +442,56 @@ else if(session.getAttribute("errorMessage")=="NOO")
 
   
 </body>
-
+  <script>
+  
+  function checku()
+  {
+	
+console.log(document.getElementById("check").value);
+	  $.ajax({
+          url : "checkUser",
+          type : "POST",
+          dataType : "text",
+          data:{checkval:document.getElementById("check").value},
+          success : function(data) {
+                  	var temp = JSON.parse(data);
+					if(temp.value && document.getElementById("check").value != ${phone} )
+						document.getElementById("addbutton").style.visibility="visible";
+					else
+						document.getElementById("addbutton").style.visibility="hidden";
+}
+          
+  });
+  }
+  
+  
+  
+    function addArray(){
+    	var memb = [];
+    	var rowCount = 1;
+	    var table = document.getElementById("tasksTable");
+    	if(!document.getElementById("user").value == "" ){
+    	  memb.push(document.getElementById("user").value);
+    	  var row = table.insertRow(rowCount);
+    	  var cell1 = row.insertCell(0);
+    	  cell1.innerHTML = memb[rowCount - 1];
+    	  rowCount++;
+    	
+    	if( typeof addArray.users == 'undefined' ) {
+    		addArray.users =[];
+        }
+	    	addArray.users.push(document.getElementById("user").value);
+    	document.getElementById("user").value = "";
+    	document.getElementById("list").value = addArray.users;
+    	console.log(addArray.users);
+    	return addArray.users;
+    	}
+    }
+    
+    function submitRequest(){
+    	 $.post("addgroupS",{array:addArray.users}, function(data, status){
+    		    alert("Data: " + data + "\nStatus: " + status);
+    		  });
+    }
+  </script>
 </html>
