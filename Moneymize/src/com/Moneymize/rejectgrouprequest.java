@@ -33,7 +33,7 @@ public class rejectgrouprequest extends HttpServlet {
 		System.out.println(pid);
 		rejectgrouprequestdao daogr = new rejectgrouprequestdao();
 		daogr.reject(pid,request);
-		response.sendRedirect("dashboard.jsp");
+		response.sendRedirect("group.jsp");
 	}
 
 }

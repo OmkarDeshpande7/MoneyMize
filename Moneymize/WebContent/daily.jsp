@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@page import="com.Moneymize.Dao.LoginDao"%>
+
 <%@page import="com.Moneymize.info.groupevent"%>
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
@@ -27,6 +29,23 @@
 </head>
 
 <body class="">
+<%
+response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
+response.setHeader("Pragma", "no-cache");//1.0
+response.setHeader("Expires", "0");//proxies
+session.setAttribute("show", "NO");
+
+if(session.getAttribute("phone")==null){
+  response.sendRedirect("index.jsp");}
+else if(session.getAttribute("errorMessage")=="NOO")
+{
+	String uname = (String) session.getAttribute("phone");
+	LoginDao daoReload = new LoginDao();
+	daoReload.Reloadall(uname, request);
+}
+
+%>
+
   <div class="wrapper"> 
     <div class="sidebar">
       <div class="sidebar-wrapper">
@@ -125,7 +144,7 @@
                  <a class="nav-link" href="">${user_name}</a>
               </li>
               <li class="nav-item text-nowrap">
-                <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Sign out</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign out</a>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
@@ -408,15 +427,5 @@
       });
   </script>
 
-  <%
-response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
-response.setHeader("Pragma", "no-cache");//1.0
-response.setHeader("Expires", "0");//proxies
-
-if(session.getAttribute("phone")==null)
-  response.sendRedirect("index.jsp");
-
-%>
-</body>
-
+ 
 </html>

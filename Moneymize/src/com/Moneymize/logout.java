@@ -16,12 +16,20 @@ public class logout extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		System.out.println("poweing off....");
 		session.removeAttribute("phone");
 		session.removeAttribute("wallet");
 		session.removeAttribute("errorMessage");
 		session.removeAttribute("errorRegisterMessage");
 		session.removeAttribute("events");
 		session.removeAttribute("requests");
+		session.removeAttribute("pevents");
+		session.removeAttribute("requests");
+		session.removeAttribute("gevents");
+		session.removeAttribute("devents");
+		session.removeAttribute("nevents");
+		session.removeAttribute("pendinggroupevent");
+		session.removeAttribute("logevent");
 		session.invalidate();
 		response.sendRedirect("index.jsp");
 	}

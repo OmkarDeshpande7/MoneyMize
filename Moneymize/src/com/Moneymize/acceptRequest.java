@@ -44,7 +44,7 @@ public class acceptRequest extends HttpServlet {
 		System.out.println(pid);
 		acceptRequestdao daor = new acceptRequestdao();
 		daor.accept(pid,request);
-		response.sendRedirect("dashboard.jsp");
+		response.sendRedirect("personal.jsp");
 		
 		
 }

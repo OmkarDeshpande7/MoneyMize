@@ -31,7 +31,7 @@ public class paymoney extends HttpServlet {
 		int eid = Integer.parseInt(request.getParameter("eid"));
 		payDao daor = new payDao();
 		daor.pay(eid,request);
-		response.sendRedirect("dashboard.jsp");
+		response.sendRedirect("personal.jsp");
 	}
 
 }

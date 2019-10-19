@@ -35,7 +35,7 @@
 </head>
 
 <body class="" >
-<%
+  <%
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
 response.setHeader("Pragma", "no-cache");//1.0
 response.setHeader("Expires", "0");//proxies
@@ -51,6 +51,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
 }
 
 %>
+  
   <div class="wrapper">
     <div class="sidebar">
       <div class="sidebar-wrapper">
@@ -150,7 +151,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
                  <a class="nav-link" href="">${user_name}</a>
               </li>
               <li class="nav-item text-nowrap">
-                <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Sign out</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign out</a>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
@@ -558,6 +559,8 @@ else if(session.getAttribute("errorMessage")=="NOO")
         application: "black-dashboard-free"
       });
   </script>
+  
+
 </body>
 
 </html>

@@ -42,7 +42,7 @@ public class rejectRequest extends HttpServlet {
 		System.out.println(pid);
 		rejectRequestdao daor = new rejectRequestdao();
 		daor.reject(pid,request);
-		response.sendRedirect("dashboard.jsp");
+		response.sendRedirect("personal.jsp");
 		
 		
 }

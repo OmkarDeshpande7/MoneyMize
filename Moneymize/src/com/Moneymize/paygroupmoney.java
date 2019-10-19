@@ -27,7 +27,7 @@ public class paygroupmoney extends HttpServlet {
 		int eid = Integer.parseInt(request.getParameter("eid"));
 		paygroupDao daor = new paygroupDao();
 		daor.pay(eid,request);
-		response.sendRedirect("dashboard.jsp");
+		response.sendRedirect("group.jsp");
 	}
 
 }

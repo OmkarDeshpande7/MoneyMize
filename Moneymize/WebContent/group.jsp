@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<%@page import="com.Moneymize.Dao.LoginDao"%>
 <%@page import="com.Moneymize.info.groupevent"%>
 <%@page import="com.Moneymize.info.pendingpersonalrequests"%>
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
+<%@page import="com.Moneymize.info.pendinggrouprequest"%>
 
 
 <%@page import="java.util.ArrayList"%>
@@ -28,6 +30,22 @@
 </head>
 
 <body class="">
+<%
+response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
+response.setHeader("Pragma", "no-cache");//1.0
+response.setHeader("Expires", "0");//proxies
+session.setAttribute("show", "NO");
+
+if(session.getAttribute("phone")==null){
+  response.sendRedirect("index.jsp");}
+else if(session.getAttribute("errorMessage")=="NOO")
+{
+	String uname = (String) session.getAttribute("phone");
+	LoginDao daoReload = new LoginDao();
+	daoReload.Reloadall(uname, request);
+}
+
+%>
   <div class="wrapper">
     <div class="sidebar">
       <div class="sidebar-wrapper">
@@ -126,7 +144,7 @@
                  <a class="nav-link" href="">${user_name}</a>
               </li>
               <li class="nav-item text-nowrap">
-                <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Sign out</a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign out</a>
               </li>
               <li class="separator d-lg-none"></li>
             </ul>
@@ -201,6 +219,77 @@
         </div>
         
       </div>
+     
+      <div class="row col-md-12" >
+          <div class="col-lg-6 col-md-6" >
+            <div class="card card-tasks" style="max-height:220px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">GROUP PENDING REQUEST</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+
+                    <%   ArrayList<pendinggrouprequest> pendinggroupevent=(ArrayList<pendinggrouprequest>) session.getAttribute("pendinggroupevent");  
+                        if (pendinggroupevent!=null){
+                      for (int i=0;i<pendinggroupevent.size();i++) {   
+                      %>
+                      <form method="post">
+                        <tr>
+                          <td>
+                            <p class="text"><%= pendinggroupevent.get(i).getAmount() + " -> " + pendinggroupevent.get(i).getOwner() %></p>
+                          </td>
+                          <td><input type="number" name="reqId" value="<%=pendinggroupevent.get(i).getId() %>" hidden></td>
+                          <td class="td-actions text-right">
+                            <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="acceptgrouprequest" >Approve</button>
+                          </td>
+                          <td class="td-actions text-right">
+                            <button class="btn btn-danger  btn-sm btn-link" type="submit" formaction="rejectgrouprequest" >Reject</button>
+                          </td>
+                        </tr>
+                      </form>
+                     <%}}%>  
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6" >
+            <div class="card card-tasks" style="max-height:220px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">Group Expense</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:160px ">
+                  <table class="table">
+                    <tbody>
+                     <%   ArrayList<groupevent> gevents=(ArrayList<groupevent>) session.getAttribute("gevents");  
+                              if (gevents!=null){
+                                       for (int i=0;i<gevents.size();i++) {   
+                      %>
+                      <tr>
+                        <td>
+                          <p class="text"><%= gevents.get(i).getTotalAmt() + " -> " + gevents.get(i).getOwner() +" : "+ gevents.get(i).getDescription() %></p>
+                                               </td>
+                                               <td class="td-actions text-right">
+                        <form action="" method="post">
+                      <input type="number" value="<%= gevents.get(i).getEid() %>" name="eid" hidden>
+                      
+                      <button class="btn btn-success  btn-sm btn-link" type="submit" formaction="paygroupmoney" >Pay</button>
+                      </form>
+                      
+                        </td>
+                      </tr>
+                     <%}}%> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>          
+        </div>
      
     </div>
   </div>
@@ -422,6 +511,9 @@
         application: "black-dashboard-free"
       });
   </script>
+  
+  
+  
 </body>
 
 </html>

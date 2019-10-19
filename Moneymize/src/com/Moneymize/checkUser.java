@@ -24,7 +24,7 @@ public class checkUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&allowPublicKeyRetrieval=true";
 	String username = "root";
-	String password = "123456";
+	String password = "#ironmanROCKX64";
 	String str = "select exists(select * from user where phone=?)";
 	private Connection con;	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

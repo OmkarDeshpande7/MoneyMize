@@ -30,7 +30,7 @@ int pid;
 		System.out.println(pid + "from group");
 		acceptgrouprequestdao daogr = new acceptgrouprequestdao();
 		daogr.accept(pid,request);
-		response.sendRedirect("dashboard.jsp");
+		response.sendRedirect("group.jsp");
 	}
 
 }
