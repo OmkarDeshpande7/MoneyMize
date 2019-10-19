@@ -30,14 +30,29 @@
   <style type="text/css">
     html, body {
     max-height: 100%;
-    overflow-y: hidden;
 }
   </style>
 </head>
 
 <body class="" >
+<%
+response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
+response.setHeader("Pragma", "no-cache");//1.0
+response.setHeader("Expires", "0");//proxies
+session.setAttribute("show", "NO");
+
+if(session.getAttribute("phone")==null){
+  response.sendRedirect("index.jsp");}
+else if(session.getAttribute("errorMessage")=="NOO")
+{
+	String uname = (String) session.getAttribute("phone");
+	LoginDao daoReload = new LoginDao();
+	daoReload.Reloadall(uname, request);
+}
+
+%>
   <div class="wrapper">
-    <div class="sidebar" style="height: 440px">
+    <div class="sidebar">
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="active">
@@ -88,14 +103,26 @@
 
 
     <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg  navbar-absolute navbar-transparent" style="margin-top: 20px">
+     <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg  navbar-absolute navbar-transparent" >
         <div class="container-fluid">
           <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
             <a class="navbar-brand" href="javascript:void(0)">Moneymize</a>
           </div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
          
-          <div class="navbar-collapse fixed-top" id="navigation" style="margin-top: 20px">
+          <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
               <li>
                 <a class="nav-link" href="">Wallet balance : ${walletst}</a>
@@ -384,7 +411,7 @@
   <script src="${pageContext.request.contextPath}/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
   <!-- Chart JS -->
   <script src="${pageContext.request.contextPath}/assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -393,16 +420,7 @@
   <script src="${pageContext.request.contextPath}/assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
   <script src="${pageContext.request.contextPath}/assets/demo/demo.js"></script>
 
-  <%
-response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1
-response.setHeader("Pragma", "no-cache");//1.0
-response.setHeader("Expires", "0");//proxies
-session.setAttribute("show", "NO");
-
-if(session.getAttribute("phone")==null)
-  response.sendRedirect("index.jsp");
-
-%>
+  
 
   <script>
 
@@ -532,7 +550,7 @@ if(session.getAttribute("phone")==null)
 
     });
   </script>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  
   <script>
     window.TrackJS &&
       TrackJS.install({

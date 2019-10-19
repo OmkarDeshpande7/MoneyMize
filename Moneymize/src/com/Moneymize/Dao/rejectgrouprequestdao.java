@@ -18,7 +18,7 @@ public class rejectgrouprequestdao
 	String sql1 = "select * from pendingpersonalrequests where pid=?";
 	String sql = "delete from pendinggrouprequests where pid=?";
 	String sql2 = "select * from pendinggrouprequests,groupevent where user=? and pendinggrouprequests.eid = groupevent.eventId";
-	 String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+	 String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&allowPublicKeyRetrieval=true";
 		String username = "root";
 		String password = "#ironmanROCKX64";
 		int pid;

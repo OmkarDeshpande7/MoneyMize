@@ -22,7 +22,7 @@ import org.json.JSONObject;
 @WebServlet("/checkUser")
 public class checkUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&allowPublicKeyRetrieval=true";
 	String username = "root";
 	String password = "123456";
 	String str = "select exists(select * from user where phone=?)";

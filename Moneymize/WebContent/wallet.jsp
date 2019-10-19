@@ -31,7 +31,7 @@
 
 <body class="">
   <div class="wrapper">
-    <div class="sidebar" style="height: 440px">
+    <div class="sidebar" id="sidebarhide">
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
@@ -81,14 +81,26 @@
     </div>
 
     <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg  navbar-absolute navbar-transparent" style="margin-top: 20px">
+       <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg  navbar-absolute navbar-transparent" >
         <div class="container-fluid">
           <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
             <a class="navbar-brand" href="javascript:void(0)">Moneymize</a>
           </div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
          
-          <div class="navbar-collapse fixed-top" id="navigation" style="margin-top: 20px">
+          <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
               <li>
                 <a class="nav-link" href="">Wallet balance : ${walletst}</a>
@@ -123,9 +135,6 @@
           </div>
         </div>
       </nav>
-      
-      
-      
       <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -148,7 +157,7 @@
         <div class="card col-md-10">
           <div class="card-body">
               <div class="row">
-                  <h5 style="margin-top: 10px"><b>Current balance:${walletst}</b></h5>
+                  <h5 style="margin-top: 10px"><b>Current balance : ${walletst}</b></h5>
               </div>
           </div>
         </div>
@@ -164,17 +173,21 @@
                   <button class="btn btn-success btn-round btn-sm animation-on-hover" type="submit">Show</button>
                 </div>
               </div>
+              
             </form>
+            
           </div>
+          
         </div>
-
- <div class="col-lg-6 col-md-6" >
-            <div class="card card-tasks" style="max-height:220px ">
+            <button style="left:40%" class="btn btn-success btn-round btn-sm animation-on-hover" onclick="window.print()" type="button">Print this page</button>
+	 
+ <div style="margin-top:20px;" class="col-lg-12 col-md-12" >
+            <div class="card card-tasks" style="max-height:500px ">
               <div class="card-header ">
                 <h6 class="title d-inline">All Transactions</h6>
               </div>
               <div class="card-body " >
-                <div class="table-full-width table-responsive" style="max-height:160px ">
+                <div class="table-full-width table-responsive" style="max-height:400px ">
                   <table class="table">
                     <tbody>
                     	 <%   ArrayList<alllog> logevent=(ArrayList<alllog>) session.getAttribute("logevent");  
@@ -194,6 +207,7 @@
             </div>
           </div>
         </div>
+
 
 
 
@@ -235,7 +249,7 @@
   <script src="${pageContext.request.contextPath}/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
   <!-- Chart JS -->
   <script src="${pageContext.request.contextPath}/assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -361,7 +375,7 @@
 
     });
   </script>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  
   <script>
     window.TrackJS &&
       TrackJS.install({
@@ -369,6 +383,7 @@
         application: "black-dashboard-free"
       });
   </script>
+  
 
 <%
 response.setHeader("cache-control","no-cache,no-store,must-revalidate");//http 1.1

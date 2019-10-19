@@ -48,7 +48,7 @@ session.setAttribute("errorMessage", null);
     <div class="content">
       <div class="container-fluid">
          <!-- your content here -->
-        <div class="col-md-5" style="margin-left:10vw">
+        <div class="col-md-5" >
 	        <div class="card">
 				  <div class="card-body">
 				    <form method="post">

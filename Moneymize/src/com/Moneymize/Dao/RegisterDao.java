@@ -10,7 +10,7 @@ public class RegisterDao {
 	String sql2 = "insert into user values(?,?,?,?,?)";
 	 String sql7 = "select * from user where phone=?";
 
-	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&allowPublicKeyRetrieval=true";
 	String username = "root";
 	String password = "#ironmanROCKX64";
 	private Connection con;	

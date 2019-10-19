@@ -14,7 +14,7 @@ public class Walletdao
 	String sql1 = "update user set wallet=? where phone=?";
 	 String sql7 = "select * from user where phone=?";
 
-	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+	String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&allowPublicKeyRetrieval=true";
 	String username = "root";
 	String password = "#ironmanROCKX64";
 	private Connection con;	

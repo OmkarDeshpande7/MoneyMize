@@ -127,4 +127,20 @@ BEGIN
 END //
 
 
+DROP PROCEDURE IF EXISTS findfriends//
+CREATE PROCEDURE findfriends (IN euser varchar(11)) 
+BEGIN	
+	if EXISTS(select user1 from friends where user1=euser) then
+	SELECT name,wallet from user where phone in (select user2 from friends where user1=euser);
+	
+	elseif EXISTS(select user2 from friends where user2=euser) then
+	SELECT name,wallet from user where phone in (select user1 from friends where user2=euser);
+	
+	ELSE
+		SELECT name,wallet from user where phone=(select user2 from friends where user1="0");
+
+	end if;
+END //
+
+
 DELIMITER ;

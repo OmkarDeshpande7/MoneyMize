@@ -5,6 +5,8 @@
 <%@page import="com.Moneymize.info.personalevent"%>
 <%@page import="com.Moneymize.info.dailyexpense"%>
 <%@page import="com.Moneymize.info.notification"%>
+<%@page import="com.Moneymize.info.friends"%>
+
 
 
 <%@page import="java.util.ArrayList"%>
@@ -29,7 +31,7 @@
 
 <body class="">
   <div class="wrapper">
-    <div class="sidebar" style="height: 440px">
+    <div class="sidebar">
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li>
@@ -79,14 +81,26 @@
     </div>
 
     <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg  navbar-absolute navbar-transparent" style="margin-top: 20px">
+       <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg  navbar-absolute navbar-transparent" >
         <div class="container-fluid">
           <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
             <a class="navbar-brand" href="javascript:void(0)">Moneymize</a>
           </div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
          
-          <div class="navbar-collapse fixed-top" id="navigation" style="margin-top: 20px">
+          <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto">
               <li>
                 <a class="nav-link" href="">Wallet balance : ${walletst}</a>
@@ -139,8 +153,31 @@
           <h5><b>User profile</b></h5>
           <hr>
         </div>
-        <!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-        
+		 <div class="col-lg-12 col-md-12" >
+            <div class="card card-tasks" style="max-height:500px ">
+              <div class="card-header ">
+                <h6 class="title d-inline">Friends</h6>
+              </div>
+              <div class="card-body " >
+                <div class="table-full-width table-responsive" style="max-height:400px ">
+                  <table class="table">
+                    <tbody>
+                    	 <%   ArrayList<friends> friendsevent=(ArrayList<friends>) session.getAttribute("friendsevent");  
+    if (friendsevent!=null){
+	for (int i=0;i<friendsevent.size();i++) {   
+	%>
+                      <tr>
+                        <td>
+                          <p class="text"><%= friendsevent.get(i).getName() + "  ->  " + friendsevent.get(i).getWallet() %></p>
+                        </td>
+                      </tr>
+                     <%}}%> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>        
       </div>
      
     </div>
@@ -179,7 +216,7 @@
   <script src="${pageContext.request.contextPath}/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <!--  Google Maps Plugin    -->
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
   <!-- Chart JS -->
   <script src="${pageContext.request.contextPath}/assets/js/plugins/chartjs.min.js"></script>
   <!--  Notifications Plugin    -->
@@ -305,7 +342,7 @@
 
     });
   </script>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  
   <script>
     window.TrackJS &&
       TrackJS.install({

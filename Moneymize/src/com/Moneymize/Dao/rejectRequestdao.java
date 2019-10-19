@@ -25,7 +25,7 @@ public class rejectRequestdao {
 	 String sql7 = "select * from user where phone=?";
 		String sql15 = "select * from notification where user=?";
 
-		String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&useSSL=false";
+		String url = "jdbc:mysql://localhost:3306/Moneymize?autoReconnect=true&allowPublicKeyRetrieval=true";
 		String username = "root";
 		String password = "#ironmanROCKX64";
 		int pid;
