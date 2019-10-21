@@ -80,12 +80,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
               <p>Personal events</p>
             </a>
           </li>
-          <li>
-            <a href="user.jsp">
-              <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
+         
           <li>
             <a href="analysis.jsp">
               <i class="tim-icons icon-chart-bar-32"></i>

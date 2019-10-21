@@ -24,7 +24,7 @@ public class LoginDao {
 	String sql3 = "select * from pendingpersonalrequests where borrower=?";
 	String sql4 = "select * from useringroup,groupevent where user=? and useringroup.eventId = groupevent.eventId";
 	String sql10 = "select * from pendinggrouprequests,groupevent where user=? and pendinggrouprequests.eid = groupevent.eventId";
-	String sql5 = "select * from notification where user=?";
+	String sql5 = "select * from notification where user=? limit 10";
 	 String sql7 = "select * from user where phone=?";
 	 String sql9 = "select * from alllog where user=?";
 	 String sql8 = "select * from dailycategory where expenseId=(select expenseId from dailyexpenses where user =? and Date=CURRENT_DATE)";

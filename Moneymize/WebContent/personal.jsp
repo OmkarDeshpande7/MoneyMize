@@ -79,12 +79,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
               <p>Personal events</p>
             </a>
           </li>
-          <li>
-            <a href="user.jsp">
-              <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
+          
           <li>
             <a href="analysis.jsp">
               <i class="tim-icons icon-chart-bar-32"></i>
@@ -177,7 +172,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
             <form action="personaleventS">
               <div class="row">
                 <div class="col">
-                  <input type="text" class="form-control" onkeyup="checku()" id="check" name="borrower" placeholder="Borrower" required>
+                  <input type="text" class="form-control" maxlength="10" onkeyup="checku()" id="check" name="borrower" placeholder="Borrower" required>
                 </div>
                 <div class="col">
                   <input type="number" min="0" step="1" max="${walletst}" class="form-control" name="amount" placeholder="Amount" required>

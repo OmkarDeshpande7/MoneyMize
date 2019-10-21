@@ -80,12 +80,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
               <p>Personal events</p>
             </a>
           </li>
-          <li>
-            <a href="user.jsp">
-              <i class="tim-icons icon-single-02"></i>
-              <p>User Profile</p>
-            </a>
-          </li>
+         
           <li class="active">
             <a href="analysis.jsp">
               <i class="tim-icons icon-chart-bar-32"></i>
@@ -189,7 +184,7 @@ else if(session.getAttribute("errorMessage")=="NOO")
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" hidden>
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">

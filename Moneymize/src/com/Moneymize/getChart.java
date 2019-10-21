@@ -46,7 +46,7 @@ public class getChart extends HttpServlet {
 		st.setString(1, uname);
 		st.executeQuery();
 		ResultSet rs7 = st.executeQuery();
-		if(rs7.next())
+		while(rs7.next())
 			{
 			array.add(rs7.getInt(1));
 			months.add(rs7.getString(2));
